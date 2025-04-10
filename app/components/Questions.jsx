@@ -15,20 +15,20 @@ export default function Question({
       return "border-gray-200 opacity-50";
     } else {
       return selectedAnswer === option
-        ? "border-indigo-500 bg-indigo-100"
-        : "border-gray-300 hover:border-indigo-400";
+        ? "border-[#632CA6] bg-purple-50 ring-2 ring-purple-200"
+        : "border-gray-300 hover:border-[#632CA6] hover:bg-gray-50";
     }
   };
 
   return (
-    <div className="border rounded-lg shadow-sm p-4 bg-white mb-4">
-      <h2 className="text-xl font-semibold mb-4">{question}</h2>
-      <ul>
+    <div className="rounded-2xl shadow-md p-6 bg-white mb-8 transition-all border-t-4 border-[#632CA6]">
+      <h2 className="text-xl font-semibold mb-4 text-gray-800">{question}</h2>
+      <ul className="space-y-3">
         {options.map((option, idx) => (
-          <li key={idx} className="mb-2">
+          <li key={idx}>
             <label
               onClick={() => onAnswerSelect(option)}
-              className={`block p-2 border rounded cursor-pointer transition-all ${getOptionStyle(
+              className={`block px-4 py-3 border rounded-lg cursor-pointer transition-all duration-200 ${getOptionStyle(
                 option
               )}`}
             >
@@ -46,12 +46,13 @@ export default function Question({
         ))}
       </ul>
       {submitted && (
-        <p className="mt-2 text-sm font-medium">
+        <p className="mt-4 text-sm font-medium">
           {selectedAnswer === correctAnswer ? (
             <span className="text-green-600">✅ Correct!</span>
           ) : (
             <span className="text-red-600">
-              ❌ Incorrect. Correct answer: <strong>{correctAnswer}</strong>
+              ❌ Incorrect. Correct answer:{" "}
+              <strong className="text-gray-800">{correctAnswer}</strong>
             </span>
           )}
         </p>
