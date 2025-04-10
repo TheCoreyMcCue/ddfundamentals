@@ -46,16 +46,18 @@ export default function Question({
         ))}
       </ul>
       {submitted && (
-        <p className="mt-4 text-sm font-medium">
+        <div className="mt-4 text-sm font-medium space-y-1">
           {selectedAnswer === correctAnswer ? (
-            <span className="text-green-600">✅ Correct!</span>
+            <p className="text-green-600">✅ Correct!</p>
           ) : (
-            <span className="text-red-600">
-              ❌ Incorrect. Correct answer:{" "}
-              <strong className="text-gray-800">{correctAnswer}</strong>
-            </span>
+            <>
+              <p className="text-red-600">❌ Incorrect.</p>
+              <p className="text-gray-800">
+                ✅ Correct answer: <strong>{correctAnswer}</strong>
+              </p>
+            </>
           )}
-        </p>
+        </div>
       )}
     </div>
   );

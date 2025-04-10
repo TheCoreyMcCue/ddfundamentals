@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import Question from "./components/Questions";
 import { quizData as rawQuizData } from "./data";
 
-// Shuffle helper
 function shuffleArray(array) {
   return [...array].sort(() => Math.random() - 0.5);
 }
@@ -13,7 +12,7 @@ export default function Home() {
   const [submitted, setSubmitted] = useState(false);
   const [quizData, setQuizData] = useState([]);
 
-  useEffect(() => {
+  const initializeQuiz = () => {
     const randomizedQuestions = shuffleArray(
       rawQuizData.map((q) => ({
         ...q,
@@ -21,6 +20,12 @@ export default function Home() {
       }))
     );
     setQuizData(randomizedQuestions);
+    setAnswers({});
+    setSubmitted(false);
+  };
+
+  useEffect(() => {
+    initializeQuiz();
   }, []);
 
   const handleAnswerSelect = (questionId, option) => {
@@ -73,10 +78,16 @@ export default function Home() {
             Submit Answers
           </button>
         ) : (
-          <div className="mt-6 text-center">
+          <div className="mt-6 text-center space-y-4">
             <p className="text-2xl font-semibold text-[#632CA6]">
               ✅ You got {correctCount} out of {quizData.length} correct!
             </p>
+            <button
+              onClick={initializeQuiz}
+              className="bg-white text-[#632CA6] hover:bg-purple-50 border border-[#632CA6] px-6 py-2 rounded-lg font-medium transition"
+            >
+              Retake Quiz
+            </button>
           </div>
         )}
       </div>
