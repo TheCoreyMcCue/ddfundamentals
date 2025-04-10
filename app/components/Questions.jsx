@@ -22,7 +22,7 @@ export default function Question({
 
   return (
     <div className="rounded-2xl shadow-md p-6 bg-white mb-8 transition-all border-t-4 border-[#632CA6]">
-      <h2 className="text-xl font-semibold mb-4 text-gray-800">{question}</h2>
+      <h2 className="text-xl font-semibold mb-4 text-black">{question}</h2>
       <ul className="space-y-3">
         {options.map((option, idx) => (
           <li key={idx}>
@@ -40,7 +40,7 @@ export default function Question({
                 checked={selectedAnswer === option}
                 readOnly
               />
-              {option}
+              <span className="text-black">{option}</span>
             </label>
           </li>
         ))}
@@ -52,7 +52,7 @@ export default function Question({
           ) : (
             <>
               <p className="text-red-600">❌ Incorrect.</p>
-              <p className="text-gray-800">
+              <p className="text-black">
                 ✅ Correct answer: <strong>{correctAnswer}</strong>
               </p>
             </>
