@@ -322,4 +322,73 @@ export const quizData = [
     options: ["8080", "3000", "8125", "9090"],
     answer: "8125",
   },
+  {
+    id: 32,
+    question:
+      "On ddtrace for Python, what is the parameter to add to tracer.config(...) to send traces through UDS?",
+    options: [
+      "g",
+      "localhost, 8126, false - https://ddtrace.readthedocs.io/en/stable/advanced_usage.html#agent-configuration",
+      'uds_path -- tracer.configure(uds_path="/path/to/socket") https://ddtrace.readthedocs.io/en/stable/advanced_usage.html',
+      "dd_checks_tag_cardinality",
+    ],
+    answer:
+      'uds_path -- tracer.configure(uds_path="/path/to/socket") https://ddtrace.readthedocs.io/en/stable/advanced_usage.html',
+  },
+  {
+    id: 33,
+    question: "In which category of metrics does `utilization` belong to?",
+    options: [
+      "Service metrics",
+      "Resource metrics",
+      "Custom metrics",
+      "Log metrics",
+    ],
+    answer: "Resource metrics",
+  },
+  {
+    id: 34,
+    question:
+      "What is the default metric type when submitting metric through API?",
+    options: ["Depends on the data type", "walking", "Not assigned", "Average"],
+    answer: "Not assigned",
+  },
+  {
+    id: 35,
+    question:
+      "How many containers in the daemonset pod deployment and what are their purpose?",
+    options: [
+      "There are 21 monitors - Host, Metric, Anomaly, APM, Audit Logs, CI, Composite, Custom Check, Error Tracking, Event, Forecast, Integration, Live Process, Logs, Network, Outlier, Process Check, Real User Monitoring, SLO Alerts, Synthetic Monitoring, Watchdog",
+      "datadog-agent flare <CASE_ID> kubectl exec -it <AGENT_POD_NAME> -c agent -- agent flare <CASE_ID>",
+      "One container with the Agent process (Agent + Log Agent), One container with the process-agent process, One container with the trace-agent process, One container with the system-probe process",
+      "If a user's account is disabled, any application keys that the user created are revoked. Any API keys that were created by the disabled account are not deleted, and are still valid.",
+    ],
+    answer:
+      "One container with the Agent process (Agent + Log Agent), One container with the process-agent process, One container with the trace-agent process, One container with the system-probe process",
+  },
+  {
+    id: 36,
+    question:
+      "What is the parameter to configure the default tags attached to metrics emitted by containers on Kubernetes?",
+    options: [
+      "The amount of disk space in use",
+      "It ensures that data is not missed if a destination becomes unavailable",
+      "trace.agent.datadoghq.com",
+      "DD_CHECKS_TAG_CARDINALITY",
+    ],
+    answer: "DD_CHECKS_TAG_CARDINALITY",
+  },
+  {
+    id: 37,
+    question:
+      "The correct way to instantiate the above Dog class is:\n\nclass Dog:\n    def __init__(self, name, age):\n        self.name = name\n        self.age = age",
+    options: [
+      "localhost, 8126, False - https://ddtrace.readthedocs.io/en/stable/advanced_usage.html#agent-configuration",
+      "Most of the functions are applied at the last step. https://docs.datadoghq.com/dashboards/guide/query-to-the-graph/",
+      '__init__(self, name, age): self.name = name self.age = age  Dog("Rufus", 3)',
+      "Anything starting with ip- or domu https://github.com/DataDog/datadog-agent/blob/main/docs/agent/hostname_force_config_as_canonical.md Note: This can be overridden for agent 6.16+ or 7.16+ with hostname_force_config_as_canonical:true",
+    ],
+    answer:
+      '__init__(self, name, age): self.name = name self.age = age  Dog("Rufus", 3)',
+  },
 ];
