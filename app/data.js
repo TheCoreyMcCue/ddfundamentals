@@ -391,4 +391,22 @@ export const quizData = [
     answer:
       '__init__(self, name, age): self.name = name self.age = age  Dog("Rufus", 3)',
   },
+  {
+    id: 38,
+    question:
+      "How to filter for my_metric where the tag team starts with `tps` and finishes with `is_the_best`?",
+    options: [
+      "average",
+      "<aggr>:my_metric{team:tps,team:is_the_best}",
+      "g",
+      "port: 10250",
+    ],
+    answer: "<aggr>:my_metric{team:tps,team:is_the_best}",
+  },
+  {
+    id: 39,
+    question: "What is the default port to receive spans?",
+    options: ["8126", "port: 7070", "port: 9090", "port: 4040"],
+    answer: "8126",
+  },
 ];
