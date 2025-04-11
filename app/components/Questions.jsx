@@ -6,10 +6,10 @@ export default function Question({
   selectedAnswer,
   onAnswerSelect,
   correctAnswer,
-  submitted,
+  checkedStatus,
 }) {
   const getOptionStyle = (option) => {
-    if (submitted) {
+    if (checkedStatus) {
       if (option === correctAnswer) return "border-green-500 bg-green-100";
       if (option === selectedAnswer) return "border-red-500 bg-red-100";
       return "border-gray-200 opacity-50";
@@ -45,9 +45,9 @@ export default function Question({
           </li>
         ))}
       </ul>
-      {submitted && (
+      {checkedStatus && (
         <div className="mt-4 text-sm font-medium space-y-1">
-          {selectedAnswer === correctAnswer ? (
+          {checkedStatus === "correct" ? (
             <p className="text-green-600">✅ Correct!</p>
           ) : (
             <>

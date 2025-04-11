@@ -9,8 +9,9 @@ function shuffleArray(array) {
 
 export default function Home() {
   const [answers, setAnswers] = useState({});
-  const [submitted, setSubmitted] = useState(false);
+  const [checkedAnswers, setCheckedAnswers] = useState({});
   const [quizData, setQuizData] = useState([]);
+  const [visibleCount, setVisibleCount] = useState(10); // paginate 10 questions at a time
 
   const initializeQuiz = () => {
     const randomizedQuestions = shuffleArray(
@@ -21,24 +22,20 @@ export default function Home() {
     );
     setQuizData(randomizedQuestions);
     setAnswers({});
-    setSubmitted(false);
+    setCheckedAnswers({});
+    setVisibleCount(10);
   };
 
   useEffect(() => {
     initializeQuiz();
   }, []);
 
-  const handleAnswerSelect = (questionId, option) => {
-    if (submitted) return;
-    setAnswers((prev) => ({ ...prev, [questionId]: option }));
-  };
-
-  const handleSubmit = () => {
-    // if (Object.keys(answers).length < quizData.length) {
-    //   alert("Please answer all questions before submitting.");
-    //   return;
-    // }
-    setSubmitted(true);
+  const handleAnswerSelect = (questionId, selectedOption, correctAnswer) => {
+    setAnswers((prev) => ({ ...prev, [questionId]: selectedOption }));
+    setCheckedAnswers((prev) => ({
+      ...prev,
+      [questionId]: selectedOption === correctAnswer ? "correct" : "incorrect",
+    }));
   };
 
   const correctCount = quizData.reduce(
@@ -53,32 +50,37 @@ export default function Home() {
           <h1 className="text-4xl font-bold text-gray-800 mb-2">
             🐶 Datadog Fundamentals Practice Exam 🐶
           </h1>
-          {/* <p className="text-gray-600 text-lg">
-            Test your knowledge and get your score instantly.
-          </p> */}
         </div>
 
-        {quizData.map(({ id, question, options, answer }) => (
-          <Question
-            key={id}
-            question={question}
-            options={options}
-            selectedAnswer={answers[id]}
-            onAnswerSelect={(option) => handleAnswerSelect(id, option)}
-            correctAnswer={answer}
-            submitted={submitted}
-          />
-        ))}
+        {quizData
+          .slice(0, visibleCount)
+          .map(({ id, question, options, answer }) => (
+            <Question
+              key={id}
+              question={question}
+              options={options}
+              selectedAnswer={answers[id]}
+              onAnswerSelect={(option) =>
+                handleAnswerSelect(id, option, answer)
+              }
+              correctAnswer={answer}
+              checkedStatus={checkedAnswers[id]}
+            />
+          ))}
 
-        {!submitted ? (
-          <button
-            onClick={handleSubmit}
-            className="w-full mt-6 bg-[#632CA6] hover:bg-purple-800 text-white font-semibold py-3 px-6 rounded-xl transition-colors text-lg"
-          >
-            Submit Answers
-          </button>
-        ) : (
-          <div className="mt-6 text-center space-y-4">
+        {visibleCount < quizData.length && (
+          <div className="text-center mt-6">
+            <button
+              onClick={() => setVisibleCount((prev) => prev + 10)}
+              className="text-[#632CA6] font-semibold hover:underline"
+            >
+              Show More Questions
+            </button>
+          </div>
+        )}
+
+        {Object.keys(checkedAnswers).length === quizData.length && (
+          <div className="mt-10 text-center space-y-4">
             <p className="text-2xl font-semibold text-[#632CA6]">
               ✅ You got {correctCount} out of {quizData.length} correct!
             </p>
