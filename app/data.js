@@ -266,4 +266,60 @@ export const quizData = [
     ],
     answer: "Examine its original datadog.yaml file.",
   },
+  {
+    id: 27,
+    question: "What is the definition of a saturation metric?",
+    options: [
+      "Measures the speed of resource processing",
+      "Represents the idle time of a resource",
+      "Is a measure of the amount of requested work that the resource cannot yet service, often queued",
+      "Indicates the total capacity of a resource",
+    ],
+    answer:
+      "Is a measure of the amount of requested work that the resource cannot yet service, often queued",
+  },
+  {
+    id: 28,
+    question: "What is the default number of check_runners?",
+    options: [
+      "6 - https://github.com/datadog/datadog-agent/blob/main/pkg/config/config_template.yaml#l583",
+      "10 - https://github.com/datadog/datadog-agent/blob/main/pkg/config/config_template.yaml#l583",
+      "2 - https://github.com/datadog/datadog-agent/blob/main/pkg/config/config_template.yaml#l583",
+      "4 - https://github.com/DataDog/datadog-agent/blob/main/pkg/config/config_template.yaml#L583",
+    ],
+    answer:
+      "4 - https://github.com/DataDog/datadog-agent/blob/main/pkg/config/config_template.yaml#L583",
+  },
+  {
+    id: 29,
+    question:
+      'What is the outcome of the following curl command?\n\ncurl -X POST "https://api.datadoghq.eu/api/v2/series" \\\n  -H "DD-API-KEY: ${DD_API_KEY}" \\\n  -d @- << EOF\n  {"series": [{"points": [{"value": 1}], "resources": [{"name": "host1", "type": "host"}]}]\n  }\nEOF',
+    options: [
+      "DD_CHECKS_TAG_CARDINALITY",
+      "~300 https://docs.datadoghq.com/dashboards/guide/query-to-the-graph/",
+      "4 - https://github.com/DataDog/datadog-agent/blob/main/pkg/config/config_template.yaml#L583",
+      '{"errors":["Payload validation failed: metric name is empty"]}',
+    ],
+    answer: '{"errors":["Payload validation failed: metric name is empty"]}',
+  },
+  {
+    id: 30,
+    question:
+      "Add the Agent user to the Docker group: usermod -a -G docker dd-agent Create a docker_daemon.yaml file by copying the example file in the Agent conf.d directory. If you have a standard install of Docker on your host, there shouldn't be anything you need to change to get the integration to work.",
+    options: [
+      "On an agent host installation, what needs to happen for the agent to access the docker daemon?",
+      "What are the names no accepted as canonical names for host (by default)?",
+      "On ddtrace for Python, what is the parameter to add to tracer.config(...) to send traces through UDS?",
+      "What are the aggregation rules per metric type with DogStatsD (at the agent level)?",
+    ],
+    answer:
+      "On an agent host installation, what needs to happen for the agent to access the docker daemon?",
+  },
+  {
+    id: 31,
+    question:
+      "What port is used to submit custom metrics to the Datadog Agent via DogStatsD?",
+    options: ["8080", "3000", "8125", "9090"],
+    answer: "8125",
+  },
 ];

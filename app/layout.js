@@ -14,6 +14,11 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "Datadog Fundamentals Practice Exam",
   description: "Datadog Fundamentals Practice Exam for Certification",
+  icons: {
+    icon: "./favicon.ico",
+    shortcut: "./favicon.ico",
+    apple: "./favicon.ico",
+  },
 };
 
 export default function RootLayout({ children }) {
