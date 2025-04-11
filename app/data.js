@@ -409,4 +409,15 @@ export const quizData = [
     options: ["8126", "port: 7070", "port: 9090", "port: 4040"],
     answer: "8126",
   },
+  {
+    id: 40,
+    question: "How often is the host map updated?",
+    options: [
+      "Once an hour",
+      "Every 5 minutes",
+      "Once every 1 minute",
+      "Every 30 seconds",
+    ],
+    answer: "Once every 1 minute",
+  },
 ];
