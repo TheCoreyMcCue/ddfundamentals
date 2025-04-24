@@ -41,17 +41,19 @@ export default function Quiz({ data, title, onReset }) {
   return (
     <div className="min-h-screen bg-gray-100 py-8 px-4 sm:px-6">
       <div className="max-w-3xl mx-auto">
-        {/* Header with Back Button and Title */}
-        <div className="bg-white rounded-xl shadow p-4 mb-8 flex flex-wrap items-center justify-between gap-4">
+        {/* Back Button */}
+        <div className="mb-4">
           <button
             onClick={onReset}
             className="text-[#632CA6] font-medium hover:underline text-sm sm:text-base"
           >
             ← Back to Quiz Menu
           </button>
-          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 text-center flex-1">
-            {title}
-          </h1>
+        </div>
+
+        {/* Title Container */}
+        <div className="bg-white rounded-xl shadow p-6 mb-8 text-center">
+          <h1 className="text-3xl font-bold text-gray-900">{title}</h1>
         </div>
 
         {/* Quiz Questions */}
@@ -81,7 +83,7 @@ export default function Quiz({ data, title, onReset }) {
           </div>
         )}
 
-        {/* Final Score & Reset Button */}
+        {/* Final Score & Retake Button */}
         {Object.keys(checkedAnswers).length === quizData.length && (
           <div className="mt-10 text-center space-y-4">
             <p className="text-2xl font-semibold text-[#632CA6]">
