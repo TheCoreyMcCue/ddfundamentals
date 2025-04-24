@@ -421,3 +421,102 @@ export const quizData = [
     answer: "Once every 1 minute",
   },
 ];
+
+export const infraFaq = [
+  {
+    id: "i1",
+    question: "How long do you store metrics?",
+    options: ["6 months", "15 months", "3 months", "12 months"],
+    answer: "15 months",
+  },
+  {
+    id: "i2",
+    question: "Can I automate the build of dashboards and monitors?",
+    options: [
+      "No, dashboards and monitors must be created manually",
+      "Only dashboards can be automated, not monitors",
+      "Yes, you can use our API and tools like Terraform to automate builds",
+      "Only via the UI wizard, not programmatically",
+    ],
+    answer:
+      "Yes, you can use our API and tools like Terraform to automate builds",
+  },
+  {
+    id: "i3",
+    question: "Do you deploy the agent as a sidecar for my Kubernetes Cluster?",
+    options: [
+      "Yes, one agent per pod using a sidecar",
+      "No, we deploy the agent as a daemonset, so one agent per host",
+      "Only for stateful workloads",
+      "Yes, it's required to run as a sidecar for observability",
+    ],
+    answer: "No, we deploy the agent as a daemonset, so one agent per host",
+  },
+  {
+    id: "i4",
+    question: "How often do we receive metrics from our API crawlers?",
+    options: [
+      "Every 5 minutes by default",
+      "Once per hour for external APIs",
+      "Mostly for cloud integrations it's around 10 minutes. This is the same as cloud-native tools.",
+      "Only during scheduled sync windows (every 24h)",
+    ],
+    answer:
+      "Mostly for cloud integrations it's around 10 minutes. This is the same as cloud-native tools.",
+  },
+  {
+    id: "i5",
+    question:
+      "Do I need the agent if I already have <cloud provider integration> installed?",
+    options: [
+      "Yes, the agent is mandatory for all integrations",
+      "No, but we strongly advise it to leverage additional metrics, granularity of data, and more unified data like logs/APM",
+      "Only if you're collecting custom metrics or using containers",
+      "No, cloud integrations alone provide full observability",
+    ],
+    answer:
+      "No, but we strongly advise it to leverage additional metrics, granularity of data, and more unified data like logs/APM",
+  },
+  {
+    id: "i6",
+    question: "Where is my data stored?",
+    options: [
+      "Data is stored exclusively in your local region to comply with all data residency laws",
+      "We are a fully cloud-hosted SaaS platform with instances across AWS, Azure, and GCP — including regions in the EU. Most data is stored in the US. We do not offer an on-premise version of Datadog.",
+      "All data is stored on customer-managed infrastructure",
+      "We store data only on AWS servers located in North America",
+    ],
+    answer:
+      "We are a fully cloud-hosted SaaS platform with instances across AWS, Azure, and GCP — including regions in the EU. Most data is stored in the US. We do not offer an on-premise version of Datadog.",
+  },
+  {
+    id: "i7",
+    question: "How do I get more advanced metrics for RDS?",
+    options: [
+      "Enable enhanced monitoring in the AWS console",
+      "Deploy the agent on an EC2 instance in the same security group as the RDS database — this allows the agent to collect additional DB-level metrics",
+      "Use a Lambda function to query metrics and forward them to Datadog",
+      "Install the agent directly on the RDS instance",
+    ],
+    answer:
+      "Deploy the agent on an EC2 instance in the same security group as the RDS database — this allows the agent to collect additional DB-level metrics",
+  },
+];
+
+export const logsFaq = [
+  {
+    id: "l1",
+    question: "Page Under Construction",
+    options: [""],
+    answer: "",
+  },
+];
+
+export const apmFaq = [
+  {
+    id: "a1",
+    question: "Page Under Construction",
+    options: [""],
+    answer: "",
+  },
+];
