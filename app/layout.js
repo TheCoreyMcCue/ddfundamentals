@@ -12,8 +12,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Datadog Fundamentals Practice Exam",
-  description: "Datadog Fundamentals Practice Exam for Certification",
+  title: "Datadog Practice Exam",
+  description: "Datadog Practice Exams for Certification",
   icons: {
     icon: "./favicon.ico",
     shortcut: "./favicon.ico",
