@@ -6,7 +6,7 @@ function shuffleArray(array) {
   return [...array].sort(() => Math.random() - 0.5);
 }
 
-export default function Quiz({ data, title, onReset }) {
+export default function Quiz({ data, title, onReset, resourceDoc }) {
   const [answers, setAnswers] = useState({});
   const [checkedAnswers, setCheckedAnswers] = useState({});
   const [quizData, setQuizData] = useState([]);
@@ -54,6 +54,16 @@ export default function Quiz({ data, title, onReset }) {
         {/* Title Container */}
         <div className="bg-white rounded-xl shadow p-6 mb-8 text-center">
           <h1 className="text-3xl font-bold text-gray-900">{title}</h1>
+          {resourceDoc && (
+            <a
+              href={resourceDoc}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#632CA6] cursor-pointer hover:underline text-sm sm:text-base"
+            >
+              ℹ️ For more info, consult the original FAQ here
+            </a>
+          )}
         </div>
 
         {/* Quiz Questions */}

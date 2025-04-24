@@ -12,9 +12,14 @@ export default function Home() {
   const [selectedQuiz, setSelectedQuiz] = useState(null);
 
   if (selectedQuiz) {
-    const { title, data } = selectedQuiz;
+    const { title, data, resourceDoc } = selectedQuiz;
     return (
-      <Quiz title={title} data={data} onReset={() => setSelectedQuiz(null)} />
+      <Quiz
+        title={title}
+        data={data}
+        resourceDoc={resourceDoc}
+        onReset={() => setSelectedQuiz(null)}
+      />
     );
   }
 
@@ -34,29 +39,46 @@ export default function Home() {
                 data: quizData,
               })
             }
-            className="w-full bg-purple-600 text-white py-3 rounded-xl font-semibold hover:bg-purple-700"
+            className="w-full bg-purple-600 cursor-pointer text-white py-3 rounded-xl font-semibold hover:bg-purple-700"
           >
             Fundamentals Quiz
           </button>
           <button
             onClick={() =>
-              setSelectedQuiz({ title: "Infrastructure Quiz", data: infraFaq })
+              setSelectedQuiz({
+                title: "Infrastructure Quiz",
+                data: infraFaq,
+                resourceDoc:
+                  "https://docs.google.com/spreadsheets/d/1tSDe73To15RM7sNSrrEKIPCOC0wT1dJkjSI8ulPGQLE/edit?gid=0#gid=0",
+              })
             }
-            className="w-full bg-purple-600 text-white py-3 rounded-xl font-semibold hover:bg-purple-700"
+            className="w-full bg-purple-600 cursor-pointer text-white py-3 rounded-xl font-semibold hover:bg-purple-700"
           >
             Infrastructure Quiz
           </button>
           <button
             onClick={() =>
-              setSelectedQuiz({ title: "Logs Quiz", data: logsFaq })
+              setSelectedQuiz({
+                title: "Logs Quiz",
+                data: logsFaq,
+                resourceDoc:
+                  "https://docs.google.com/spreadsheets/d/10qkAsgQNg9-egJo_aWUqOSjeV02RepjWdJViub6SguQ/edit?gid=0#gid=0",
+              })
             }
-            className="w-full bg-purple-600 text-white py-3 rounded-xl font-semibold hover:bg-purple-700"
+            className="w-full bg-purple-600 cursor-pointer text-white py-3 rounded-xl font-semibold hover:bg-purple-700"
           >
             Logs Quiz
           </button>
           <button
-            onClick={() => setSelectedQuiz({ title: "APM Quiz", data: apmFaq })}
-            className="w-full bg-purple-600 text-white py-3 rounded-xl font-semibold hover:bg-purple-700"
+            onClick={() =>
+              setSelectedQuiz({
+                title: "APM Quiz",
+                data: apmFaq,
+                resourceDoc:
+                  "https://docs.google.com/spreadsheets/d/1STzv43Ez00jsmvex5tblklSNy7jUCde-VN_oOluEs6M/edit?gid=0#gid=0",
+              })
+            }
+            className="w-full bg-purple-600 cursor-pointer text-white py-3 rounded-xl font-semibold hover:bg-purple-700"
           >
             APM Quiz
           </button>
@@ -67,7 +89,7 @@ export default function Home() {
                 data: getRandom3Pillar(),
               })
             }
-            className="w-full bg-gray-200 text-purple-700 py-3 rounded-xl font-semibold hover:bg-gray-300"
+            className="w-full bg-gray-200 cursor-pointer text-purple-700 py-3 rounded-xl font-semibold hover:bg-gray-300"
           >
             🔀 Random 3 Pillar Quiz
           </button>
