@@ -501,22 +501,46 @@ export const infraFaq = [
     answer:
       "Deploy the agent on an EC2 instance in the same security group as the RDS database — this allows the agent to collect additional DB-level metrics",
   },
+  {
+    id: "i8",
+    question: "Do you have any community dashboards I can use?",
+    options: [
+      "No, but it's a great opportunity to ask what kind of dashboards they're looking for and show how easy it is to build one in Datadog — plus we offer many out-of-the-box templates",
+      "Yes, all dashboards in Datadog are shared by the community",
+      "No, dashboards must be imported manually from GitHub",
+      "Only custom dashboards are available — no templates or examples are provided",
+    ],
+    answer:
+      "No, but it's a great opportunity to ask what kind of dashboards they're looking for and show how easy it is to build one in Datadog — plus we offer many out-of-the-box templates",
+  },
 ];
 
 export const logsFaq = [
   {
     id: "l1",
-    question: "Page Under Construction",
-    options: [""],
-    answer: "",
+    question: "Can I enrich logs with additional attributes during parsing?",
+    options: [
+      "Yes, through enrichment tables. You can upload a CSV and Datadog will perform vlookups to add attributes to your logs",
+      "No, enrichment can only happen after logs are indexed",
+      "Only metrics can be enriched with lookup tables, not logs",
+      "Yes, but only by modifying the original source log before ingestion",
+    ],
+    answer:
+      "Yes, through enrichment tables. You can upload a CSV and Datadog will perform vlookups to add attributes to your logs",
   },
 ];
 
 export const apmFaq = [
   {
     id: "a1",
-    question: "Page Under Construction",
-    options: [""],
-    answer: "",
+    question: "What is a trace in APM?",
+    options: [
+      "In APM, a trace is a record of how a request flows through your system, made up of one or more spans",
+      "A trace is a single metric collected over time from your application",
+      "Traces are log entries that include stack traces for errors",
+      "It is a static diagram showing service dependencies",
+    ],
+    answer:
+      "In APM, a trace is a record of how a request flows through your system, made up of one or more spans",
   },
 ];
