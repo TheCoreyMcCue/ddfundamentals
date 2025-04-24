@@ -39,57 +39,63 @@ export default function Quiz({ data, title, onReset }) {
   );
 
   return (
-    <div className="max-w-3xl mx-auto">
-      <div className="mb-6 flex justify-between items-center">
-        <button
-          onClick={onReset}
-          className="text-[#632CA6] hover:underline font-medium"
-        >
-          ← Back to Quiz Menu
-        </button>
-        <h1 className="text-3xl font-bold text-gray-800 text-center flex-1">
-          {title}
-        </h1>
-      </div>
-
-      {quizData.slice(0, visibleCount).map((q) => (
-        <Question
-          key={q.id}
-          question={q.question}
-          options={q.options}
-          selectedAnswer={answers[q.id]}
-          onAnswerSelect={(option) =>
-            handleAnswerSelect(q.id, option, q.answer)
-          }
-          correctAnswer={q.answer}
-          checkedStatus={checkedAnswers[q.id]}
-        />
-      ))}
-
-      {visibleCount < quizData.length && (
-        <div className="text-center mt-6">
-          <button
-            onClick={() => setVisibleCount((prev) => prev + 10)}
-            className="text-[#632CA6] font-semibold hover:underline"
-          >
-            Show More Questions
-          </button>
-        </div>
-      )}
-
-      {Object.keys(checkedAnswers).length === quizData.length && (
-        <div className="mt-10 text-center space-y-4">
-          <p className="text-2xl font-semibold text-[#632CA6]">
-            ✅ You got {correctCount} out of {quizData.length} correct!
-          </p>
+    <div className="min-h-screen bg-gray-100 py-8 px-4 sm:px-6">
+      <div className="max-w-3xl mx-auto">
+        {/* Header with Back Button and Title */}
+        <div className="bg-white rounded-xl shadow p-4 mb-8 flex flex-wrap items-center justify-between gap-4">
           <button
             onClick={onReset}
-            className="bg-white text-[#632CA6] hover:bg-purple-50 border border-[#632CA6] px-6 py-2 rounded-lg font-medium transition"
+            className="text-[#632CA6] font-medium hover:underline text-sm sm:text-base"
           >
-            Back to Quiz Menu
+            ← Back to Quiz Menu
           </button>
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 text-center flex-1">
+            {title}
+          </h1>
         </div>
-      )}
+
+        {/* Quiz Questions */}
+        {quizData.slice(0, visibleCount).map((q) => (
+          <Question
+            key={q.id}
+            question={q.question}
+            options={q.options}
+            selectedAnswer={answers[q.id]}
+            onAnswerSelect={(option) =>
+              handleAnswerSelect(q.id, option, q.answer)
+            }
+            correctAnswer={q.answer}
+            checkedStatus={checkedAnswers[q.id]}
+          />
+        ))}
+
+        {/* Show More Button */}
+        {visibleCount < quizData.length && (
+          <div className="text-center mt-6">
+            <button
+              onClick={() => setVisibleCount((prev) => prev + 10)}
+              className="text-[#632CA6] font-semibold hover:underline"
+            >
+              Show More Questions
+            </button>
+          </div>
+        )}
+
+        {/* Final Score & Reset Button */}
+        {Object.keys(checkedAnswers).length === quizData.length && (
+          <div className="mt-10 text-center space-y-4">
+            <p className="text-2xl font-semibold text-[#632CA6]">
+              ✅ You got {correctCount} out of {quizData.length} correct!
+            </p>
+            <button
+              onClick={onReset}
+              className="bg-white text-[#632CA6] hover:bg-purple-50 border border-[#632CA6] px-6 py-2 rounded-lg font-medium transition"
+            >
+              Back to Quiz Menu
+            </button>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
