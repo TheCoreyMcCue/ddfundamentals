@@ -10,6 +10,7 @@ const getRandom3Pillar = () => {
 
 export default function Home() {
   const [selectedQuiz, setSelectedQuiz] = useState(null);
+  const [showBanner, setShowBanner] = useState(true); // 🍪 Cookie banner toggle
 
   if (selectedQuiz) {
     const { title, data, resourceDoc } = selectedQuiz;
@@ -24,7 +25,31 @@ export default function Home() {
   }
 
   return (
-    <main className="min-h-screen bg-gray-100 py-12 px-6">
+    <main className="min-h-screen bg-gray-100 py-12 px-6 relative">
+      {/* 🍪 Cookie Banner */}
+      {showBanner && (
+        <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-300 shadow-md p-4 z-50 flex flex-col sm:flex-row items-center justify-between text-sm">
+          <span className="text-gray-800 mb-2 sm:mb-0">
+            We use cookies to enhance the user experience. By continuing, you
+            accept our use of cookies.
+          </span>
+          <div className="flex gap-2">
+            <button
+              onClick={() => setShowBanner(false)}
+              className="bg-[#632CA6] text-white px-4 py-1 rounded hover:bg-purple-700"
+            >
+              Accept
+            </button>
+            <button
+              onClick={() => setShowBanner(false)}
+              className="border border-gray-400 px-4 py-1 rounded text-gray-700 hover:bg-gray-100"
+            >
+              Decline
+            </button>
+          </div>
+        </div>
+      )}
+
       <div className="max-w-xl mx-auto text-center space-y-6">
         <h1 className="text-4xl font-bold text-gray-800">
           🐶 Datadog Quiz Hub 🐶
