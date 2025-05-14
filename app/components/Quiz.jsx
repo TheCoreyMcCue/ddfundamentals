@@ -2,6 +2,8 @@
 import { useState, useEffect } from "react";
 import Question from "./Questions";
 
+import { datadogLogs } from "@/utils/datadog";
+
 function shuffleArray(array) {
   return [...array].sort(() => Math.random() - 0.5);
 }
@@ -26,13 +28,22 @@ export default function Quiz({ data, title, onReset, resourceDoc }) {
   }, [data]);
 
   const handleAnswerSelect = (id, selectedOption, correctAnswer) => {
+    const isCorrect = selectedOption === correctAnswer;
+
     setAnswers((prev) => ({ ...prev, [id]: selectedOption }));
     setCheckedAnswers((prev) => ({
       ...prev,
-      [id]: selectedOption === correctAnswer ? "correct" : "incorrect",
+      [id]: isCorrect ? "correct" : "incorrect",
     }));
-  };
 
+    // Log to Datadog
+    datadogLogs.logger.info("User selected quiz answer", {
+      questionId: id,
+      selectedOption,
+      correctAnswer,
+      isCorrect,
+    });
+  };
   const correctCount = quizData.reduce(
     (count, q) => (answers[q.id] === q.answer ? count + 1 : count),
     0
