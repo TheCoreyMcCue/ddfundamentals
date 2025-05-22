@@ -18,6 +18,7 @@ datadogRum.init({
   env: "production",
   sampleRate: 100,
   sessionReplaySampleRate: 20,
+  startSessionReplayRecordingManually: true,
   trackInteractions: true,
 });
 
