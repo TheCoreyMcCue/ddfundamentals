@@ -1543,3 +1543,28 @@ export const apmFaq = [
     answer: "Yes",
   },
 ];
+
+export const logFundamentalsPracticeExam = [
+  {
+    id: "lf-1",
+    question:
+      "How would a URL be generated that dynamically links to the appropriate dashboard in an alert's message?",
+    options: [
+      "Create an advanced alert condition.",
+      "Add a priority to the alert.",
+      "Use a template variable.",
+    ],
+    answer: "Use a template variable.",
+  },
+  {
+    id: "lf-2",
+    question:
+      "On Linux systems, which directory should the Agent's 'dd-agent' user own in order to write to log files?",
+    options: [
+      "/tmp/log/",
+      "/var/log/datadog/",
+      "/etc/datadog-agent/",
+    ],
+    answer: "/var/log/datadog/",
+  },
+];
