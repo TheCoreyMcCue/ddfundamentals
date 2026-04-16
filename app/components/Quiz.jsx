@@ -2,7 +2,6 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Question from "./Questions";
-
 import { datadogLogs } from "@/utils/datadog";
 
 function shuffleArray(array) {
@@ -17,10 +16,7 @@ export default function Quiz({ data, title, resourceDoc }) {
 
   useEffect(() => {
     const randomized = shuffleArray(
-      data.map((q) => ({
-        ...q,
-        options: shuffleArray(q.options),
-      }))
+      data.map((q) => ({ ...q, options: shuffleArray(q.options) }))
     );
     setQuizData(randomized);
     setAnswers({});
@@ -30,14 +26,11 @@ export default function Quiz({ data, title, resourceDoc }) {
 
   const handleAnswerSelect = (id, selectedOption, correctAnswer) => {
     const isCorrect = selectedOption === correctAnswer;
-
     setAnswers((prev) => ({ ...prev, [id]: selectedOption }));
     setCheckedAnswers((prev) => ({
       ...prev,
       [id]: isCorrect ? "correct" : "incorrect",
     }));
-
-    // Log to Datadog
     datadogLogs.logger.info("User selected quiz answer", {
       questionId: id,
       selectedOption,
@@ -45,43 +38,128 @@ export default function Quiz({ data, title, resourceDoc }) {
       isCorrect,
     });
   };
+
+  const answeredCount = Object.keys(checkedAnswers).length;
   const correctCount = quizData.reduce(
     (count, q) => (answers[q.id] === q.answer ? count + 1 : count),
     0
   );
+  const progressPct =
+    quizData.length > 0 ? Math.round((answeredCount / quizData.length) * 100) : 0;
+  const isFinished = answeredCount === quizData.length && quizData.length > 0;
+  const scorePct =
+    quizData.length > 0 ? Math.round((correctCount / quizData.length) * 100) : 0;
 
-  return (
-    <div className="min-h-screen bg-gray-100 py-8 px-4 sm:px-6">
-      <div className="max-w-3xl mx-auto">
-        {/* Back Button */}
-        <div className="mb-4">
-          <Link
-            href="/"
-            className="text-[#632CA6] font-medium hover:underline text-sm sm:text-base"
-          >
-            ← Back to Quiz Menu
-          </Link>
-        </div>
+  if (isFinished) {
+    return (
+      <div className="min-h-screen bg-[#0a0a10] flex flex-col items-center justify-center px-6 py-16">
+        <div className="w-full max-w-lg text-center">
+          {/* Score ring */}
+          <div className="relative mx-auto mb-8 w-36 h-36">
+            <svg className="w-full h-full -rotate-90" viewBox="0 0 120 120">
+              <circle
+                cx="60" cy="60" r="50"
+                fill="none" stroke="#1e1b2e" strokeWidth="10"
+              />
+              <circle
+                cx="60" cy="60" r="50"
+                fill="none" stroke="#632CA6" strokeWidth="10"
+                strokeDasharray={`${2 * Math.PI * 50}`}
+                strokeDashoffset={`${2 * Math.PI * 50 * (1 - scorePct / 100)}`}
+                strokeLinecap="round"
+                className="transition-all duration-700"
+              />
+            </svg>
+            <div className="absolute inset-0 flex flex-col items-center justify-center">
+              <span className="text-3xl font-bold text-white">{scorePct}%</span>
+              <span className="text-xs text-slate-500 mt-0.5">score</span>
+            </div>
+          </div>
 
-        {/* Title Container */}
-        <div className="bg-white rounded-xl shadow p-6 mb-8 text-center">
-          <h1 className="text-3xl font-bold text-gray-900">{title}</h1>
+          <h2 className="text-2xl font-bold text-white mb-1">Quiz Complete</h2>
+          <p className="text-slate-400 mb-2">
+            You got{" "}
+            <span className="text-white font-semibold">{correctCount}</span> out
+            of{" "}
+            <span className="text-white font-semibold">{quizData.length}</span>{" "}
+            correct
+          </p>
+          <p className="text-sm text-slate-500 mb-8">{title}</p>
+
           {resourceDoc && (
             <a
               href={resourceDoc}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#632CA6] cursor-pointer hover:underline text-sm sm:text-base"
+              className="inline-block mb-4 text-sm text-purple-400 hover:text-purple-300 hover:underline"
             >
-              ℹ️ For more info, consult the original FAQ here
+              ℹ️ Review the study material
             </a>
           )}
+
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <Link
+              href="/"
+              className="rounded-xl border border-white/10 bg-white/5 px-6 py-2.5 text-sm font-medium text-slate-300 hover:bg-white/10 hover:text-white transition-colors"
+            >
+              ← Back to Dashboard
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen bg-[#0a0a10] px-4 py-8 sm:px-6">
+      <div className="mx-auto max-w-3xl">
+
+        {/* Back link */}
+        <div className="mb-6">
+          <Link
+            href="/"
+            className="inline-flex items-center gap-1.5 rounded-lg border border-white/8 bg-white/4 px-3 py-1.5 text-sm text-slate-400 hover:border-white/15 hover:text-white transition-all"
+          >
+            ← Back to Dashboard
+          </Link>
         </div>
 
-        {/* Quiz Questions */}
-        {quizData.slice(0, visibleCount).map((q) => (
+        {/* Header card */}
+        <div className="rounded-2xl border border-white/8 bg-slate-900/50 p-6 mb-6 backdrop-blur-sm">
+          <h1 className="text-2xl font-bold text-white">{title}</h1>
+          {resourceDoc && (
+            <a
+              href={resourceDoc}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-1 inline-block text-sm text-purple-400 hover:text-purple-300 hover:underline"
+            >
+              ℹ️ Study material
+            </a>
+          )}
+
+          {/* Progress bar */}
+          <div className="mt-5">
+            <div className="mb-1.5 flex justify-between text-xs text-slate-500">
+              <span>
+                {answeredCount} / {quizData.length} answered
+              </span>
+              <span>{progressPct}%</span>
+            </div>
+            <div className="h-1.5 w-full rounded-full bg-white/8">
+              <div
+                className="h-1.5 rounded-full bg-[#632CA6] transition-all duration-300"
+                style={{ width: `${progressPct}%` }}
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Questions */}
+        {quizData.slice(0, visibleCount).map((q, idx) => (
           <Question
             key={q.id}
+            questionNumber={idx + 1}
             question={q.question}
             options={q.options}
             selectedAnswer={answers[q.id]}
@@ -93,30 +171,15 @@ export default function Quiz({ data, title, resourceDoc }) {
           />
         ))}
 
-        {/* Show More Button */}
+        {/* Load more */}
         {visibleCount < quizData.length && (
-          <div className="text-center mt-6">
+          <div className="mt-2 mb-8 text-center">
             <button
               onClick={() => setVisibleCount((prev) => prev + 10)}
-              className="text-[#632CA6] font-semibold hover:underline"
+              className="rounded-xl border border-white/8 bg-white/4 px-6 py-2.5 text-sm font-medium text-slate-300 hover:bg-white/8 hover:text-white transition-all"
             >
-              Show More Questions
+              Load more questions
             </button>
-          </div>
-        )}
-
-        {/* Final Score & Retake Button */}
-        {Object.keys(checkedAnswers).length === quizData.length && (
-          <div className="mt-10 text-center space-y-4">
-            <p className="text-2xl font-semibold text-[#632CA6]">
-              ✅ You got {correctCount} out of {quizData.length} correct!
-            </p>
-            <Link
-              href="/"
-              className="bg-white text-[#632CA6] hover:bg-purple-50 border border-[#632CA6] px-6 py-2 rounded-lg font-medium transition"
-            >
-              Back to Quiz Menu
-            </Link>
           </div>
         )}
       </div>
