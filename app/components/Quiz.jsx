@@ -8,6 +8,14 @@ function shuffleArray(array) {
   return [...array].sort(() => Math.random() - 0.5);
 }
 
+function isAnswerCorrect(selected, correct) {
+  if (Array.isArray(correct)) {
+    if (!Array.isArray(selected) || selected.length !== correct.length) return false;
+    return selected.every((o) => correct.includes(o));
+  }
+  return selected === correct;
+}
+
 export default function Quiz({ data, title, resourceDoc }) {
   const [answers, setAnswers] = useState({});
   const [checkedAnswers, setCheckedAnswers] = useState({});
@@ -24,24 +32,52 @@ export default function Quiz({ data, title, resourceDoc }) {
     setVisibleCount(10);
   }, [data]);
 
-  const handleAnswerSelect = (id, selectedOption, correctAnswer) => {
-    const isCorrect = selectedOption === correctAnswer;
-    setAnswers((prev) => ({ ...prev, [id]: selectedOption }));
-    setCheckedAnswers((prev) => ({
-      ...prev,
-      [id]: isCorrect ? "correct" : "incorrect",
-    }));
-    datadogLogs.logger.info("User selected quiz answer", {
-      questionId: id,
-      selectedOption,
-      correctAnswer,
-      isCorrect,
-    });
+  const handleAnswerSelect = (id, selectedOption, correctAnswer, multiSelect) => {
+    if (checkedAnswers[id]) return;
+
+    if (multiSelect) {
+      const current = answers[id] || [];
+      const alreadySelected = current.includes(selectedOption);
+      const newSelection = alreadySelected
+        ? current.filter((o) => o !== selectedOption)
+        : [...current, selectedOption];
+
+      setAnswers((prev) => ({ ...prev, [id]: newSelection }));
+
+      // Auto-check once the required number of options are selected
+      const requiredCount = Array.isArray(correctAnswer) ? correctAnswer.length : 1;
+      if (newSelection.length === requiredCount) {
+        const isCorrect = isAnswerCorrect(newSelection, correctAnswer);
+        setCheckedAnswers((prev) => ({
+          ...prev,
+          [id]: isCorrect ? "correct" : "incorrect",
+        }));
+        datadogLogs.logger.info("User selected quiz answer", {
+          questionId: id,
+          selectedOptions: newSelection,
+          correctAnswer,
+          isCorrect,
+        });
+      }
+    } else {
+      const isCorrect = selectedOption === correctAnswer;
+      setAnswers((prev) => ({ ...prev, [id]: selectedOption }));
+      setCheckedAnswers((prev) => ({
+        ...prev,
+        [id]: isCorrect ? "correct" : "incorrect",
+      }));
+      datadogLogs.logger.info("User selected quiz answer", {
+        questionId: id,
+        selectedOption,
+        correctAnswer,
+        isCorrect,
+      });
+    }
   };
 
   const answeredCount = Object.keys(checkedAnswers).length;
   const correctCount = quizData.reduce(
-    (count, q) => (answers[q.id] === q.answer ? count + 1 : count),
+    (count, q) => (isAnswerCorrect(answers[q.id], q.answer) ? count + 1 : count),
     0
   );
   const progressPct =
@@ -57,10 +93,7 @@ export default function Quiz({ data, title, resourceDoc }) {
           {/* Score ring */}
           <div className="relative mx-auto mb-8 w-36 h-36">
             <svg className="w-full h-full -rotate-90" viewBox="0 0 120 120">
-              <circle
-                cx="60" cy="60" r="50"
-                fill="none" stroke="#1e1b2e" strokeWidth="10"
-              />
+              <circle cx="60" cy="60" r="50" fill="none" stroke="#1e1b2e" strokeWidth="10" />
               <circle
                 cx="60" cy="60" r="50"
                 fill="none" stroke="#632CA6" strokeWidth="10"
@@ -79,10 +112,8 @@ export default function Quiz({ data, title, resourceDoc }) {
           <h2 className="text-2xl font-bold text-white mb-1">Quiz Complete</h2>
           <p className="text-slate-400 mb-2">
             You got{" "}
-            <span className="text-white font-semibold">{correctCount}</span> out
-            of{" "}
-            <span className="text-white font-semibold">{quizData.length}</span>{" "}
-            correct
+            <span className="text-white font-semibold">{correctCount}</span> out of{" "}
+            <span className="text-white font-semibold">{quizData.length}</span> correct
           </p>
           <p className="text-sm text-slate-500 mb-8">{title}</p>
 
@@ -141,9 +172,7 @@ export default function Quiz({ data, title, resourceDoc }) {
           {/* Progress bar */}
           <div className="mt-5">
             <div className="mb-1.5 flex justify-between text-xs text-slate-500">
-              <span>
-                {answeredCount} / {quizData.length} answered
-              </span>
+              <span>{answeredCount} / {quizData.length} answered</span>
               <span>{progressPct}%</span>
             </div>
             <div className="h-1.5 w-full rounded-full bg-white/8">
@@ -164,10 +193,11 @@ export default function Quiz({ data, title, resourceDoc }) {
             options={q.options}
             selectedAnswer={answers[q.id]}
             onAnswerSelect={(option) =>
-              handleAnswerSelect(q.id, option, q.answer)
+              handleAnswerSelect(q.id, option, q.answer, q.multiSelect)
             }
             correctAnswer={q.answer}
             checkedStatus={checkedAnswers[q.id]}
+            multiSelect={q.multiSelect ?? false}
           />
         ))}
 

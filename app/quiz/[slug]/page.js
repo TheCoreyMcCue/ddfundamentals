@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import Quiz from "@/app/components/Quiz";
-import { quizData, infraFaq, logsFaq, apmFaq } from "@/app/data";
+import { quizData, infraFaq, logsFaq, apmFaq, awsCloudPractitionerPracticeExam } from "@/app/data";
 
 const quizConfig = {
   fundamentals: {
@@ -24,6 +24,10 @@ const quizConfig = {
     data: apmFaq,
     resourceDoc:
       "https://docs.google.com/spreadsheets/d/1STzv43Ez00jsmvex5tblklSNy7jUCde-VN_oOluEs6M/edit?gid=0#gid=0",
+  },
+  "aws-ccp": {
+    title: "AWS Cloud Practitioner Practice Exam",
+    data: awsCloudPractitionerPracticeExam,
   },
 };
 

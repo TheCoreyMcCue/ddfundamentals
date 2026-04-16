@@ -48,6 +48,20 @@ const tracks = [
     ],
   },
   {
+    category: "Cloud Certifications",
+    description: "Practice exams for AWS and other cloud provider certifications",
+    quizzes: [
+      {
+        id: "aws-ccp",
+        title: "AWS Cloud Practitioner",
+        duration: "~45 min",
+        difficulty: "Intermediate",
+        level: "CCP",
+        icon: "☁️",
+      },
+    ],
+  },
+  {
     category: "SE Excellence",
     description: "Mixed challenges to sharpen cross-product expertise",
     quizzes: [
