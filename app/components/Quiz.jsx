@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import Question from "./Questions";
 
 import { datadogLogs } from "@/utils/datadog";
@@ -8,7 +9,7 @@ function shuffleArray(array) {
   return [...array].sort(() => Math.random() - 0.5);
 }
 
-export default function Quiz({ data, title, onReset, resourceDoc }) {
+export default function Quiz({ data, title, resourceDoc }) {
   const [answers, setAnswers] = useState({});
   const [checkedAnswers, setCheckedAnswers] = useState({});
   const [quizData, setQuizData] = useState([]);
@@ -54,12 +55,12 @@ export default function Quiz({ data, title, onReset, resourceDoc }) {
       <div className="max-w-3xl mx-auto">
         {/* Back Button */}
         <div className="mb-4">
-          <button
-            onClick={onReset}
+          <Link
+            href="/"
             className="text-[#632CA6] font-medium hover:underline text-sm sm:text-base"
           >
             ← Back to Quiz Menu
-          </button>
+          </Link>
         </div>
 
         {/* Title Container */}
@@ -110,12 +111,12 @@ export default function Quiz({ data, title, onReset, resourceDoc }) {
             <p className="text-2xl font-semibold text-[#632CA6]">
               ✅ You got {correctCount} out of {quizData.length} correct!
             </p>
-            <button
-              onClick={onReset}
+            <Link
+              href="/"
               className="bg-white text-[#632CA6] hover:bg-purple-50 border border-[#632CA6] px-6 py-2 rounded-lg font-medium transition"
             >
               Back to Quiz Menu
-            </button>
+            </Link>
           </div>
         )}
       </div>
