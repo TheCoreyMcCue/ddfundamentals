@@ -1,29 +1,92 @@
 "use client";
 import { useState } from "react";
-import Link from "next/link";
+import TrackSection from "./components/TrackSection";
+
+const tracks = [
+  {
+    category: "Datadog Core",
+    description: "Foundation knowledge every SE needs on day one",
+    quizzes: [
+      {
+        id: "fundamentals",
+        title: "Fundamentals Quiz",
+        duration: "~30 min",
+        difficulty: "Beginner",
+        level: "L100",
+        icon: "🐶",
+      },
+    ],
+  },
+  {
+    category: "Product Expertise",
+    description: "Deep dives into key product areas and customer FAQs",
+    quizzes: [
+      {
+        id: "infrastructure",
+        title: "Infrastructure Customer FAQ",
+        duration: "~15 min",
+        difficulty: "Intermediate",
+        level: "L200",
+        icon: "🖥️",
+      },
+      {
+        id: "logs",
+        title: "Logs Customer FAQ",
+        duration: "~15 min",
+        difficulty: "Intermediate",
+        level: "L200",
+        icon: "📋",
+      },
+      {
+        id: "apm",
+        title: "APM FAQ",
+        duration: "~15 min",
+        difficulty: "Intermediate",
+        level: "L200",
+        icon: "📡",
+      },
+    ],
+  },
+  {
+    category: "SE Excellence",
+    description: "Mixed challenges to sharpen cross-product expertise",
+    quizzes: [
+      {
+        id: "random",
+        title: "Random FAQs",
+        duration: "~10 min",
+        difficulty: "Mixed",
+        level: "L300",
+        icon: "🔀",
+      },
+    ],
+  },
+];
+
+const totalModules = tracks.flatMap((t) => t.quizzes).length;
 
 export default function Home() {
   const [showBanner, setShowBanner] = useState(true);
 
   return (
-    <main className="min-h-screen bg-gray-100 py-12 px-6 relative">
+    <div className="min-h-screen bg-[#0a0a10] text-white">
       {/* Cookie Banner */}
       {showBanner && (
-        <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-300 shadow-md p-4 z-50 flex flex-col sm:flex-row items-center justify-between text-sm">
-          <span className="text-gray-800 mb-2 sm:mb-0">
+        <div className="fixed bottom-0 left-0 right-0 z-50 flex flex-col items-center justify-between gap-3 border-t border-white/10 bg-[#13131e] px-6 py-4 text-sm sm:flex-row">
+          <span className="text-gray-400">
             We use cookies to enhance the user experience. By continuing, you
             accept our use of cookies.
           </span>
-          <div className="flex gap-2">
+          <div className="flex shrink-0 gap-2">
             <button
               onClick={() => setShowBanner(false)}
-              className="bg-[#632CA6] text-white px-4 py-1 rounded hover:bg-purple-700"
+              className="rounded-lg bg-[#632CA6] px-4 py-1.5 text-white hover:bg-purple-700 transition-colors"
             >
               Accept
             </button>
             <button
               onClick={() => setShowBanner(false)}
-              className="border border-gray-400 px-4 py-1 rounded text-gray-700 hover:bg-gray-100"
+              className="rounded-lg border border-white/15 px-4 py-1.5 text-gray-400 hover:bg-white/5 transition-colors"
             >
               Decline
             </button>
@@ -31,45 +94,55 @@ export default function Home() {
         </div>
       )}
 
-      <div className="max-w-xl mx-auto text-center space-y-6">
-        <h1 className="text-4xl font-bold text-gray-800">
-          🐶 Datadog Quiz Hub 🐶
-        </h1>
-        <p className="text-lg text-gray-600">Choose a quiz to get started:</p>
+      {/* Hero */}
+      <div className="border-b border-white/8 bg-gradient-to-b from-[#1a0a2e]/60 to-transparent">
+        <div className="mx-auto max-w-5xl px-6 py-14">
+          <p className="mb-2 text-sm font-medium uppercase tracking-widest text-[#9b6dda]">
+            SE Learning Track
+          </p>
+          <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
+            Welcome, SE 👋
+          </h1>
+          <p className="mt-3 text-gray-400">
+            Build product expertise and crush your customer conversations.
+          </p>
 
-        <div className="space-y-4">
-          <Link
-            href="/quiz/fundamentals"
-            className="block w-full bg-purple-600 text-white py-3 rounded-xl font-semibold hover:bg-purple-700"
-          >
-            Fundamentals Quiz
-          </Link>
-          <Link
-            href="/quiz/infrastructure"
-            className="block w-full bg-purple-600 text-white py-3 rounded-xl font-semibold hover:bg-purple-700"
-          >
-            Infrastructure Customer FAQ
-          </Link>
-          <Link
-            href="/quiz/logs"
-            className="block w-full bg-purple-600 text-white py-3 rounded-xl font-semibold hover:bg-purple-700"
-          >
-            Logs Customer FAQ
-          </Link>
-          <Link
-            href="/quiz/apm"
-            className="block w-full bg-purple-600 text-white py-3 rounded-xl font-semibold hover:bg-purple-700"
-          >
-            APM FAQ
-          </Link>
-          <Link
-            href="/quiz/random"
-            className="block w-full bg-gray-200 text-purple-700 py-3 rounded-xl font-semibold hover:bg-gray-300"
-          >
-            🔀 Random FAQs
-          </Link>
+          {/* Progress pill */}
+          <div className="mt-8 inline-flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 px-5 py-3">
+            <div className="flex flex-col">
+              <span className="text-xs text-gray-500 uppercase tracking-wide">
+                Progress
+              </span>
+              <span className="text-lg font-semibold text-white">
+                0 /{" "}
+                <span className="text-gray-400">{totalModules} Modules</span>
+              </span>
+            </div>
+            <div className="h-10 w-px bg-white/10" />
+            <div className="w-36">
+              <div className="mb-1 flex justify-between text-xs text-gray-500">
+                <span>Completed</span>
+                <span>0%</span>
+              </div>
+              <div className="h-1.5 w-full rounded-full bg-white/10">
+                <div className="h-1.5 w-0 rounded-full bg-[#632CA6]" />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </main>
+
+      {/* Track sections */}
+      <div className="mx-auto max-w-5xl space-y-12 px-6 py-12 pb-24">
+        {tracks.map((track) => (
+          <TrackSection
+            key={track.category}
+            category={track.category}
+            description={track.description}
+            quizzes={track.quizzes}
+          />
+        ))}
+      </div>
+    </div>
   );
 }
