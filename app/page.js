@@ -15,6 +15,14 @@ const tracks = [
         level: "L100",
         icon: "🐶",
       },
+      {
+        id: "log-fundamentals",
+        title: "Log Management Fundamentals",
+        duration: "~15 min",
+        difficulty: "Intermediate",
+        level: "L200",
+        icon: "🪵",
+      },
     ],
   },
   {

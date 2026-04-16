@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import Quiz from "@/app/components/Quiz";
-import { quizData, infraFaq, logsFaq, apmFaq, awsCloudPractitionerPracticeExam } from "@/app/data";
+import { quizData, infraFaq, logsFaq, apmFaq, awsCloudPractitionerPracticeExam, logFundamentalsPracticeExam } from "@/app/data";
 
 const quizConfig = {
   fundamentals: {
@@ -28,6 +28,10 @@ const quizConfig = {
   "aws-ccp": {
     title: "AWS Cloud Practitioner Practice Exam",
     data: awsCloudPractitionerPracticeExam,
+  },
+  "log-fundamentals": {
+    title: "Log Management Fundamentals Practice Exam",
+    data: logFundamentalsPracticeExam,
   },
 };
 
