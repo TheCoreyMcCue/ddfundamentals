@@ -1,12 +1,13 @@
 "use client";
 import { useState, useEffect, useCallback } from "react";
+import Link from "next/link";
 import TrackSection from "./components/TrackSection";
 import { useUser } from "./components/EmailGate";
 
 const tracks = [
   {
-    category: "Datadog Core",
-    description: "Foundation knowledge every SE needs on day one",
+    category: "Datadog Certifications",
+    description: "Official Datadog certification practice exams",
     quizzes: [
       {
         id: "fundamentals",
@@ -38,8 +39,32 @@ const tracks = [
     ],
   },
   {
-    category: "Product Expertise",
-    description: "Deep dives into key product areas and customer FAQs",
+    category: "Cloud Certifications",
+    description: "Practice exams for AWS, Azure, GCP and other cloud provider certifications",
+    quizzes: [
+      {
+        id: "aws-ccp",
+        title: "AWS Cloud Practitioner",
+        duration: "~45 min",
+        difficulty: "Intermediate",
+        level: "CCP",
+        icon: "☁️",
+        certification: true,
+      },
+      {
+        id: "gcp-cdl",
+        title: "GCP Cloud Digital Leader",
+        duration: "~45 min",
+        difficulty: "Intermediate",
+        level: "CDL",
+        icon: "🌐",
+        certification: true,
+      },
+    ],
+  },
+  {
+    category: "Product FAQs",
+    description: "Deep dives into key product areas and common customer questions",
     quizzes: [
       {
         id: "infrastructure",
@@ -64,21 +89,6 @@ const tracks = [
         difficulty: "Intermediate",
         level: "L200",
         icon: "📡",
-      },
-    ],
-  },
-  {
-    category: "Cloud Certifications",
-    description: "Practice exams for AWS and other cloud provider certifications",
-    quizzes: [
-      {
-        id: "aws-ccp",
-        title: "AWS Cloud Practitioner",
-        duration: "~45 min",
-        difficulty: "Intermediate",
-        level: "CCP",
-        icon: "☁️",
-        certification: true,
       },
     ],
   },
@@ -193,7 +203,7 @@ export default function Home() {
           </p>
 
           {/* Progress pill */}
-          <div className="mt-8 inline-flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 px-5 py-3">
+          <Link href="/progress" className="mt-8 inline-flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 px-5 py-3 hover:border-[#632CA6]/50 hover:bg-white/8 transition-all">
             <div className="flex flex-col">
               <span className="text-xs text-gray-500 uppercase tracking-wide">
                 Progress
@@ -216,7 +226,7 @@ export default function Home() {
                 />
               </div>
             </div>
-          </div>
+          </Link>
         </div>
       </div>
 
