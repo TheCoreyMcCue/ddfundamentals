@@ -1594,7 +1594,8 @@ export const logFundamentalsPracticeExam = [
   },
   {
     id: "lf-6",
-    question: "Which of the following is a key benefit of using Logging Without Limits?",
+    question:
+      "Which of the following is a key benefit of using Logging Without Limits?",
     options: [
       "generating metrics",
       "archiving all logs",
@@ -1604,45 +1605,53 @@ export const logFundamentalsPracticeExam = [
   },
   {
     id: "lf-7",
-    question: "By default, which directory contains logs for processes running on a Linux distribution?",
+    question:
+      "By default, which directory contains logs for processes running on a Linux distribution?",
     options: ["/tmp/", "/etc/logrotate/", "/var/log/"],
     answer: "/var/log/",
   },
   {
     id: "lf-8",
-    question: "Which Datadog product should be used to automatically detect security signals from logs?",
+    question:
+      "Which Datadog product should be used to automatically detect security signals from logs?",
     options: ["Datadog SIEM", "Datadog CSPM", "Datadog AppSec"],
     answer: "Datadog SIEM",
   },
   {
     id: "lf-9",
-    question: "What is the maximum number of facets supported by Timeseries and Table visualizations?",
+    question:
+      "What is the maximum number of facets supported by Timeseries and Table visualizations?",
     options: ["3", "4", "5"],
     answer: "3",
   },
   {
     id: "lf-10",
-    question: "To present data so it is more easily understood, move a column in the Log Explorer by",
+    question:
+      "To present data so it is more easily understood, move a column in the Log Explorer by",
     options: [
       "clicking on a column header's dropdown menu and selecting an Insert option.",
       "dragging and dropping columns to the left or right.",
       "clicking on a column header's dropdown menu and selecting a Move option.",
     ],
-    answer: "clicking on a column header's dropdown menu and selecting a Move option.",
+    answer:
+      "clicking on a column header's dropdown menu and selecting a Move option.",
   },
   {
     id: "lf-11",
-    question: "Which of the following should be done to visualize log counts by facet in the Log Explorer?",
+    question:
+      "Which of the following should be done to visualize log counts by facet in the Log Explorer?",
     options: [
       "Click the Group into Fields button, and group by a facet in the dropdown list.",
       "Click the Group into Patterns button, and group by status and service.",
       "Click the Group into Patterns button, and group by status.",
     ],
-    answer: "Click the Group into Fields button, and group by a facet in the dropdown list.",
+    answer:
+      "Click the Group into Fields button, and group by a facet in the dropdown list.",
   },
   {
     id: "lf-12",
-    question: "Which of the following should be done to aggregate logs into long-term key performance indicators (KPIs)?",
+    question:
+      "Which of the following should be done to aggregate logs into long-term key performance indicators (KPIs)?",
     options: [
       "Click the Export button and select Generate New Metric.",
       "Click the Export button and select Export to Dashboard.",
@@ -1652,7 +1661,8 @@ export const logFundamentalsPracticeExam = [
   },
   {
     id: "lf-13",
-    question: "Logs provide insight into an application by helping users understand",
+    question:
+      "Logs provide insight into an application by helping users understand",
     options: [
       "why the application failed.",
       "how the application performed.",
@@ -1662,47 +1672,56 @@ export const logFundamentalsPracticeExam = [
   },
   {
     id: "lf-14",
-    question: "How can specific logs be filtered from processing based on value?",
+    question:
+      "How can specific logs be filtered from processing based on value?",
     options: [
       "Set the exclude type with a pattern to test log data against in the Datadog Agent.",
       "Set the exclude_at_match type with a pattern to test log data against in the Datadog Agent.",
       "Create a list of filter patterns in the Datadog application.",
     ],
-    answer: "Set the exclude_at_match type with a pattern to test log data against in the Datadog Agent.",
+    answer:
+      "Set the exclude_at_match type with a pattern to test log data against in the Datadog Agent.",
   },
   {
     id: "lf-15",
-    question: "If log data is important but contains sensitive material, how can that log be processed with the sensitive data hidden?",
+    question:
+      "If log data is important but contains sensitive material, how can that log be processed with the sensitive data hidden?",
     options: [
       "Add a log processing rule with a 'mask sequence' type to match sensitive data patterns and mask it.",
       "Add a log parsing pipeline to match sensitive data patterns and mask it.",
       "Mask the log data at the application-level before emitting it.",
     ],
-    answer: "Add a log processing rule with a 'mask sequence' type to match sensitive data patterns and mask it.",
+    answer:
+      "Add a log processing rule with a 'mask sequence' type to match sensitive data patterns and mask it.",
   },
   {
     id: "lf-16",
-    question: "How can string data in a JSON object from a source that does not have an integration be parsed?",
+    question:
+      "How can string data in a JSON object from a source that does not have an integration be parsed?",
     options: [
       "Parse the data at the application-level prior to emitting the log from the source.",
       "Use the generic JSON processing pipeline to parse the data.",
       "Create a custom processing pipeline to parse the data based on the tagged source.",
     ],
-    answer: "Create a custom processing pipeline to parse the data based on the tagged source.",
+    answer:
+      "Create a custom processing pipeline to parse the data based on the tagged source.",
   },
   {
     id: "lf-17",
-    question: "How can a sortable column based on a log's attribute be added to the List View of the Log Explorer?",
+    question:
+      "How can a sortable column based on a log's attribute be added to the List View of the Log Explorer?",
     options: [
-      "from both the List View \"Options\" dropdown menu and from the facets panel on the left side of the Explorer",
-      "from only the List View \"Options\" dropdown menu",
+      'from both the List View "Options" dropdown menu and from the facets panel on the left side of the Explorer',
+      'from only the List View "Options" dropdown menu',
       "from the Configuration submenu item under Logs in the main navigation",
     ],
-    answer: "from both the List View \"Options\" dropdown menu and from the facets panel on the left side of the Explorer",
+    answer:
+      'from both the List View "Options" dropdown menu and from the facets panel on the left side of the Explorer',
   },
   {
     id: "lf-18",
-    question: "From the Log Explorer, how can product stakeholders be notified of business-critical data based on a search query?",
+    question:
+      "From the Log Explorer, how can product stakeholders be notified of business-critical data based on a search query?",
     options: [
       "Export the search query to a new dashboard.",
       "Export the search query to a new notebook.",
@@ -1722,13 +1741,15 @@ export const logFundamentalsPracticeExam = [
   },
   {
     id: "lf-20",
-    question: "Which Datadog Agent command allows printing of all configurations loaded in a running Agent?",
+    question:
+      "Which Datadog Agent command allows printing of all configurations loaded in a running Agent?",
     options: ["config", "configload", "configcheck"],
     answer: "configcheck",
   },
   {
     id: "lf-21",
-    question: "Which of the following is a benefit of leveraging Standard Attributes in logs?",
+    question:
+      "Which of the following is a benefit of leveraging Standard Attributes in logs?",
     options: ["version control", "easy to search", "API access"],
     answer: "easy to search",
   },
@@ -1763,6 +1784,154 @@ export const logFundamentalsPracticeExam = [
       "source:nginx AND source:redis",
     ],
     answer: "source:nginx AND source:redis",
+  },
+  {
+    id: "lf-26",
+    question:
+      "What must be enabled in the datadog.yaml file for the Agent to begin collecting logs?",
+    options: [
+      "logs_enabled: true",
+      "collect_logs: true",
+      "enable_logging: true",
+    ],
+    answer: "logs_enabled: true",
+  },
+  {
+    id: "lf-27",
+    question:
+      "Which processor should be used to define which attribute should be used as the official timestamp of a log?",
+    options: ["Grok Parser", "Date Remapper", "Status Remapper"],
+    answer: "Date Remapper",
+  },
+  {
+    id: "lf-28",
+    question: "What is the primary purpose of Log Rehydration?",
+    options: [
+      "To move logs from the Log Explorer to a Dashboard.",
+      "To search and analyze logs that have already been archived to cold storage (S3/GCS/Azure).",
+      "To automatically fix parsing errors in old logs.",
+    ],
+    answer:
+      "To search and analyze logs that have already been archived to cold storage (S3/GCS/Azure).",
+  },
+  {
+    id: "lf-29",
+    question:
+      "In the Log Explorer, what is the difference between a Facet and a Measure?",
+    options: [
+      "Facets are for strings (categorical); Measures are for numerical values (aggregatable).",
+      "Facets are for searching; Measures are only for Dashboards.",
+      "Facets are free; Measures cost extra per month.",
+    ],
+    answer:
+      "Facets are for strings (categorical); Measures are for numerical values (aggregatable).",
+  },
+  {
+    id: "lf-30",
+    question: "What is the 'Golden Rule' for correlating Logs with APM traces?",
+    options: [
+      "The log must be in JSON format.",
+      "The log must contain dd.trace_id and dd.span_id attributes.",
+      "The log must be sent from the same host as the trace.",
+    ],
+    answer: "The log must contain dd.trace_id and dd.span_id attributes.",
+  },
+  {
+    id: "lf-31",
+    question:
+      "Which feature allows you to see a live stream of all logs being ingested by Datadog before they are indexed?",
+    options: ["Live Tail", "Log Analytics", "Log Patterns"],
+    answer: "Live Tail",
+  },
+  {
+    id: "lf-32",
+    question:
+      "If multiple pipelines match a single log, in what order are they executed?",
+    options: [
+      "In the order they are listed in the Pipeline UI (Top to Bottom).",
+      "In alphabetical order based on the pipeline name.",
+      "Simultaneously in parallel.",
+    ],
+    answer: "In the order they are listed in the Pipeline UI (Top to Bottom).",
+  },
+  {
+    id: "lf-33",
+    question:
+      "Which attribute is used to group logs into 'log streams' in the Log Explorer?",
+    options: ["Message", "Service", "Source"],
+    answer: "Service",
+  },
+  {
+    id: "lf-34",
+    question: "What does the 'Source' attribute primarily control in Datadog?",
+    options: [
+      "The billing category for the log.",
+      "Which out-of-the-box (OOTB) integration pipeline and dashboard are applied.",
+      "The physical location of the server.",
+    ],
+    answer:
+      "Which out-of-the-box (OOTB) integration pipeline and dashboard are applied.",
+  },
+  {
+    id: "lf-35",
+    question: "Which of these is a valid destination for Datadog Log Archives?",
+    options: [
+      "Amazon S3, Google Cloud Storage, or Azure Blob Storage",
+      "Datadog Managed Disk",
+      "Local host storage only",
+    ],
+    answer: "Amazon S3, Google Cloud Storage, or Azure Blob Storage",
+  },
+  {
+    id: "lf-36",
+    question: "What is a 'Grok Rule' primarily used for?",
+    options: [
+      "Setting alerting thresholds.",
+      "Extracting structured attributes from unstructured text messages.",
+      "Masking sensitive data in the Agent.",
+    ],
+    answer: "Extracting structured attributes from unstructured text messages.",
+  },
+  {
+    id: "lf-37",
+    question:
+      "How can you reduce costs without losing visibility into your high-volume log sources?",
+    options: [
+      "Turn off log collection entirely.",
+      "Use Exclusion Filters to index only a percentage (sampling) of logs while archiving 100%.",
+      "Compress the logs manually before sending to Datadog.",
+    ],
+    answer:
+      "Use Exclusion Filters to index only a percentage (sampling) of logs while archiving 100%.",
+  },
+  {
+    id: "lf-38",
+    question:
+      "In the Agent's conf.yaml for logs, what does the 'type' parameter specify?",
+    options: [
+      "The log level (INFO, WARN, ERROR).",
+      "The source of the log (file, tcp, udp, journald).",
+      "The programming language of the application.",
+    ],
+    answer: "The source of the log (file, tcp, udp, journald).",
+  },
+  {
+    id: "lf-39",
+    question: "What happens to logs that do not match any Index filters?",
+    options: [
+      "They are deleted immediately.",
+      "They are ingested and archived, but not indexed for search (Logging Without Limits).",
+      "They are sent to the 'General' index by default.",
+    ],
+    answer:
+      "They are ingested and archived, but not indexed for search (Logging Without Limits).",
+  },
+  {
+    id: "lf-40",
+    question:
+      "Which Log Explorer view helps identify 'noisy' logs by grouping similar messages together?",
+    options: ["List View", "Patterns View", "Analytics View"],
+    answer: "Patterns View",
   },
 ];
 
@@ -2602,7 +2771,8 @@ export const awsCloudPractitionerPracticeExam = [
   },
   {
     id: "acp-66",
-    question: "A Cloud Practitioner would like to centrally view, manage, and operate nodes to quickly identify any issues that might impact applications using those resources. Which AWS service can help with this task?",
+    question:
+      "A Cloud Practitioner would like to centrally view, manage, and operate nodes to quickly identify any issues that might impact applications using those resources. Which AWS service can help with this task?",
     options: [
       "Amazon Inspector",
       "AWS Systems Manager",
@@ -2613,7 +2783,8 @@ export const awsCloudPractitionerPracticeExam = [
   },
   {
     id: "acp-67",
-    question: "Which Amazon Elastic Compute Cloud (Amazon EC2) Auto Scaling feature can help with fault tolerance?",
+    question:
+      "Which Amazon Elastic Compute Cloud (Amazon EC2) Auto Scaling feature can help with fault tolerance?",
     options: [
       "Having the right amount of computing capacity",
       "Replacing unhealthy Amazon EC2 instances",
@@ -2624,7 +2795,8 @@ export const awsCloudPractitionerPracticeExam = [
   },
   {
     id: "acp-68",
-    question: "According to the AWS Well-Architected Framework, which of the following action is recommended in the Security pillar?",
+    question:
+      "According to the AWS Well-Architected Framework, which of the following action is recommended in the Security pillar?",
     options: [
       "Use AWS Key Management Service (AWS KMS) to encrypt data",
       "Use Amazon CloudWatch to measure overall efficiency",
@@ -2635,18 +2807,15 @@ export const awsCloudPractitionerPracticeExam = [
   },
   {
     id: "acp-69",
-    question: "Which AWS serverless service allows you to prepare data for analytics?",
-    options: [
-      "Amazon Athena",
-      "AWS Glue",
-      "Amazon EMR",
-      "Amazon Redshift",
-    ],
+    question:
+      "Which AWS serverless service allows you to prepare data for analytics?",
+    options: ["Amazon Athena", "AWS Glue", "Amazon EMR", "Amazon Redshift"],
     answer: "AWS Glue",
   },
   {
     id: "acp-70",
-    question: "An e-commerce company would like to build a chatbot for its customer service using Natural Language Understanding (NLU). As a Cloud Practitioner, which AWS service would you use?",
+    question:
+      "An e-commerce company would like to build a chatbot for its customer service using Natural Language Understanding (NLU). As a Cloud Practitioner, which AWS service would you use?",
     options: [
       "Amazon SageMaker",
       "Amazon Lex",
@@ -2657,7 +2826,8 @@ export const awsCloudPractitionerPracticeExam = [
   },
   {
     id: "acp-71",
-    question: "Which of the following AWS services is used to provide low-latency access to data by caching it in memory?",
+    question:
+      "Which of the following AWS services is used to provide low-latency access to data by caching it in memory?",
     options: [
       "Amazon Redshift",
       "Amazon RDS",
@@ -2668,7 +2838,8 @@ export const awsCloudPractitionerPracticeExam = [
   },
   {
     id: "acp-72",
-    question: "A company has a static website hosted on Amazon S3 and wants to deliver it globally with low latency. Which AWS service should they use?",
+    question:
+      "A company has a static website hosted on Amazon S3 and wants to deliver it globally with low latency. Which AWS service should they use?",
     options: [
       "AWS Global Accelerator",
       "Amazon CloudFront",
@@ -2690,7 +2861,8 @@ export const awsCloudPractitionerPracticeExam = [
   },
   {
     id: "acp-74",
-    question: "Adding more CPU/RAM to an Amazon Elastic Compute Cloud (Amazon EC2) instance represents which of the following?",
+    question:
+      "Adding more CPU/RAM to an Amazon Elastic Compute Cloud (Amazon EC2) instance represents which of the following?",
     options: [
       "Managing increasing volumes of data",
       "Horizontal scaling",
@@ -2701,7 +2873,8 @@ export const awsCloudPractitionerPracticeExam = [
   },
   {
     id: "acp-75",
-    question: "Which AWS service helps you to centrally manage compliance requirements and security policies across multiple AWS accounts?",
+    question:
+      "Which AWS service helps you to centrally manage compliance requirements and security policies across multiple AWS accounts?",
     options: [
       "Amazon Inspector",
       "AWS Security Hub",
@@ -2712,7 +2885,8 @@ export const awsCloudPractitionerPracticeExam = [
   },
   {
     id: "acp-76",
-    question: "Which AWS tool/service will help you define your cloud infrastructure using popular programming languages such as Python and JavaScript?",
+    question:
+      "Which AWS tool/service will help you define your cloud infrastructure using popular programming languages such as Python and JavaScript?",
     options: [
       "AWS CloudFormation",
       "AWS Cloud Development Kit (AWS CDK)",
@@ -2734,40 +2908,35 @@ export const awsCloudPractitionerPracticeExam = [
   },
   {
     id: "acp-78",
-    question: "Which AWS service allows you to run code without provisioning or managing servers?",
-    options: [
-      "Amazon EC2",
-      "AWS Lambda",
-      "Amazon ECS",
-      "AWS Batch",
-    ],
+    question:
+      "Which AWS service allows you to run code without provisioning or managing servers?",
+    options: ["Amazon EC2", "AWS Lambda", "Amazon ECS", "AWS Batch"],
     answer: "AWS Lambda",
   },
   {
     id: "acp-79",
-    question: "According to the AWS Shared Responsibility Model, which of the following is the responsibility of the customer?",
+    question:
+      "According to the AWS Shared Responsibility Model, which of the following is the responsibility of the customer?",
     options: [
       "Managing Amazon DynamoDB",
       "Edge locations security",
       "Firewall & networking configuration of Amazon Elastic Compute Cloud (Amazon EC2)",
       "Protecting hardware infrastructure",
     ],
-    answer: "Firewall & networking configuration of Amazon Elastic Compute Cloud (Amazon EC2)",
+    answer:
+      "Firewall & networking configuration of Amazon Elastic Compute Cloud (Amazon EC2)",
   },
   {
     id: "acp-80",
-    question: "Which AWS service provides a fully managed message queuing service?",
-    options: [
-      "Amazon SNS",
-      "Amazon SQS",
-      "AWS Step Functions",
-      "Amazon MQ",
-    ],
+    question:
+      "Which AWS service provides a fully managed message queuing service?",
+    options: ["Amazon SNS", "Amazon SQS", "AWS Step Functions", "Amazon MQ"],
     answer: "Amazon SQS",
   },
   {
     id: "acp-81",
-    question: "Which AWS Identity and Access Management (AWS IAM) Security Tools allows you to review permissions granted to an IAM user?",
+    question:
+      "Which AWS Identity and Access Management (AWS IAM) Security Tools allows you to review permissions granted to an IAM user?",
     options: [
       "IAM credentials report",
       "AWS Identity and Access Management (IAM) access advisor",
@@ -2778,7 +2947,8 @@ export const awsCloudPractitionerPracticeExam = [
   },
   {
     id: "acp-82",
-    question: "Which AWS service is used to send notifications via SMS, email, or other protocols?",
+    question:
+      "Which AWS service is used to send notifications via SMS, email, or other protocols?",
     options: [
       "Amazon SQS",
       "AWS Step Functions",
@@ -2796,11 +2966,13 @@ export const awsCloudPractitionerPracticeExam = [
       "The ability to achieve lower latency through caching",
       "The ability to secure your applications using encryption",
     ],
-    answer: "The ability to automatically scale resources up or down based on demand",
+    answer:
+      "The ability to automatically scale resources up or down based on demand",
   },
   {
     id: "acp-84",
-    question: "Which AWS service allows you to analyze and visualize data using standard SQL queries on data stored in Amazon S3?",
+    question:
+      "Which AWS service allows you to analyze and visualize data using standard SQL queries on data stored in Amazon S3?",
     options: [
       "Amazon Redshift",
       "Amazon RDS",
@@ -2811,7 +2983,8 @@ export const awsCloudPractitionerPracticeExam = [
   },
   {
     id: "acp-85",
-    question: "A startup needs to quickly launch a new web application with minimum configuration and no infrastructure management. Which AWS service would be most appropriate?",
+    question:
+      "A startup needs to quickly launch a new web application with minimum configuration and no infrastructure management. Which AWS service would be most appropriate?",
     options: [
       "Amazon EC2",
       "AWS Elastic Beanstalk",
@@ -2822,7 +2995,8 @@ export const awsCloudPractitionerPracticeExam = [
   },
   {
     id: "acp-86",
-    question: "Which of the following criteria are used to calculate the charge for Amazon EBS Volumes? (Select TWO)",
+    question:
+      "Which of the following criteria are used to calculate the charge for Amazon EBS Volumes? (Select TWO)",
     options: [
       "Data transfer IN",
       "Volume type",
@@ -2835,7 +3009,8 @@ export const awsCloudPractitionerPracticeExam = [
   },
   {
     id: "acp-87",
-    question: "Which AWS service would you use to transfer large amounts of data from on-premises to AWS in a secure and fast way?",
+    question:
+      "Which AWS service would you use to transfer large amounts of data from on-premises to AWS in a secure and fast way?",
     options: [
       "AWS Direct Connect",
       "AWS Snowball",
@@ -2846,7 +3021,8 @@ export const awsCloudPractitionerPracticeExam = [
   },
   {
     id: "acp-88",
-    question: "According to the AWS Well-Architected Framework, which of the following statements are recommendations of the Operational Excellence pillar? (Select TWO)",
+    question:
+      "According to the AWS Well-Architected Framework, which of the following statements are recommendations of the Operational Excellence pillar? (Select TWO)",
     options: [
       "Use serverless architectures",
       "Anticipate failure",
@@ -2859,18 +3035,15 @@ export const awsCloudPractitionerPracticeExam = [
   },
   {
     id: "acp-89",
-    question: "Which AWS service provides DDoS protection for your applications?",
-    options: [
-      "AWS WAF",
-      "Amazon Inspector",
-      "AWS Shield",
-      "Amazon GuardDuty",
-    ],
+    question:
+      "Which AWS service provides DDoS protection for your applications?",
+    options: ["AWS WAF", "Amazon Inspector", "AWS Shield", "Amazon GuardDuty"],
     answer: "AWS Shield",
   },
   {
     id: "acp-90",
-    question: "Which service provides a virtual network dedicated to your AWS account?",
+    question:
+      "Which service provides a virtual network dedicated to your AWS account?",
     options: [
       "AWS Direct Connect",
       "Amazon VPC",
@@ -2881,7 +3054,8 @@ export const awsCloudPractitionerPracticeExam = [
   },
   {
     id: "acp-91",
-    question: "According to the AWS Shared Responsibility Model, which of the following is both the responsibility of AWS and the customer? (Select TWO)",
+    question:
+      "According to the AWS Shared Responsibility Model, which of the following is both the responsibility of AWS and the customer? (Select TWO)",
     options: [
       "Operating system (OS) configuration",
       "Configuration management",
@@ -2894,7 +3068,8 @@ export const awsCloudPractitionerPracticeExam = [
   },
   {
     id: "acp-92",
-    question: "Which of the following services are provided by Amazon Route 53? (Select Two)",
+    question:
+      "Which of the following services are provided by Amazon Route 53? (Select Two)",
     options: [
       "Health checks and monitoring",
       "Load balancing",
@@ -2908,28 +3083,20 @@ export const awsCloudPractitionerPracticeExam = [
   {
     id: "acp-93",
     question: "Which AWS service provides a managed Kubernetes service?",
-    options: [
-      "Amazon ECS",
-      "AWS Fargate",
-      "Amazon EKS",
-      "AWS Batch",
-    ],
+    options: ["Amazon ECS", "AWS Fargate", "Amazon EKS", "AWS Batch"],
     answer: "Amazon EKS",
   },
   {
     id: "acp-94",
-    question: "An engineering team would like to cost-effectively run hundreds of thousands of batch computing workloads on AWS. As a Cloud Practitioner, which AWS service would you use for this task?",
-    options: [
-      "AWS Batch",
-      "Amazon Lightsail",
-      "AWS Fargate",
-      "AWS Lambda",
-    ],
+    question:
+      "An engineering team would like to cost-effectively run hundreds of thousands of batch computing workloads on AWS. As a Cloud Practitioner, which AWS service would you use for this task?",
+    options: ["AWS Batch", "Amazon Lightsail", "AWS Fargate", "AWS Lambda"],
     answer: "AWS Batch",
   },
   {
     id: "acp-95",
-    question: "Which AWS service offers a petabyte-scale data warehousing solution?",
+    question:
+      "Which AWS service offers a petabyte-scale data warehousing solution?",
     options: [
       "Amazon RDS",
       "Amazon DynamoDB",
@@ -2940,7 +3107,8 @@ export const awsCloudPractitionerPracticeExam = [
   },
   {
     id: "acp-96",
-    question: "Which AWS service helps you manage spending across your AWS accounts?",
+    question:
+      "Which AWS service helps you manage spending across your AWS accounts?",
     options: [
       "AWS Cost Explorer",
       "AWS Pricing Calculator",
@@ -2951,7 +3119,8 @@ export const awsCloudPractitionerPracticeExam = [
   },
   {
     id: "acp-97",
-    question: "Which AWS service allows you to quickly and easily add user sign-up, sign-in, and access control to web and mobile applications?",
+    question:
+      "Which AWS service allows you to quickly and easily add user sign-up, sign-in, and access control to web and mobile applications?",
     options: [
       "AWS Organizations",
       "AWS Identity and Access Management (AWS IAM)",
@@ -2962,7 +3131,8 @@ export const awsCloudPractitionerPracticeExam = [
   },
   {
     id: "acp-98",
-    question: "Which types of monitoring can be provided by Amazon CloudWatch? (Select TWO)",
+    question:
+      "Which types of monitoring can be provided by Amazon CloudWatch? (Select TWO)",
     options: [
       "Application performance",
       "Resource utilization",
@@ -2975,18 +3145,15 @@ export const awsCloudPractitionerPracticeExam = [
   },
   {
     id: "acp-99",
-    question: "Which AWS service provides a fully managed container orchestration service using Docker containers?",
-    options: [
-      "AWS Lambda",
-      "Amazon EKS",
-      "Amazon ECS",
-      "AWS Fargate",
-    ],
+    question:
+      "Which AWS service provides a fully managed container orchestration service using Docker containers?",
+    options: ["AWS Lambda", "Amazon EKS", "Amazon ECS", "AWS Fargate"],
     answer: "Amazon ECS",
   },
   {
     id: "acp-100",
-    question: "Which AWS service would you use to migrate databases to AWS quickly and securely?",
+    question:
+      "Which AWS service would you use to migrate databases to AWS quickly and securely?",
     options: [
       "AWS Schema Conversion Tool",
       "AWS Database Migration Service (AWS DMS)",
@@ -2997,20 +3164,16 @@ export const awsCloudPractitionerPracticeExam = [
   },
   {
     id: "acp-101",
-    question: "A production company with predictable usage would like to reduce the cost of its Amazon Elastic Compute Cloud (Amazon EC2) instances by choosing the right pricing plan. Which pricing plans should they consider? (Select TWO)",
-    options: [
-      "3 years",
-      "1 year",
-      "5 years",
-      "2 years",
-      "6 months",
-    ],
+    question:
+      "A production company with predictable usage would like to reduce the cost of its Amazon Elastic Compute Cloud (Amazon EC2) instances by choosing the right pricing plan. Which pricing plans should they consider? (Select TWO)",
+    options: ["3 years", "1 year", "5 years", "2 years", "6 months"],
     answer: ["3 years", "1 year"],
     multiSelect: true,
   },
   {
     id: "acp-102",
-    question: "Which AWS service provides automated recommendations to help you follow AWS best practices and improve your environment?",
+    question:
+      "Which AWS service provides automated recommendations to help you follow AWS best practices and improve your environment?",
     options: [
       "Amazon Inspector",
       "AWS Config",
@@ -3021,7 +3184,8 @@ export const awsCloudPractitionerPracticeExam = [
   },
   {
     id: "acp-103",
-    question: "According to the AWS Shared Responsibility Model, which of the following are the responsibilities of AWS? (Select TWO)",
+    question:
+      "According to the AWS Shared Responsibility Model, which of the following are the responsibilities of AWS? (Select TWO)",
     options: [
       "Configuring IAM Roles",
       "Network operability",
@@ -3034,7 +3198,8 @@ export const awsCloudPractitionerPracticeExam = [
   },
   {
     id: "acp-104",
-    question: "Which AWS service provides a managed workflow service to build applications using visual workflows?",
+    question:
+      "Which AWS service provides a managed workflow service to build applications using visual workflows?",
     options: [
       "Amazon SQS",
       "Amazon SNS",
@@ -3045,7 +3210,8 @@ export const awsCloudPractitionerPracticeExam = [
   },
   {
     id: "acp-105",
-    question: "Which AWS service provides a content delivery network (CDN) for distributing data globally?",
+    question:
+      "Which AWS service provides a content delivery network (CDN) for distributing data globally?",
     options: [
       "AWS Global Accelerator",
       "Amazon Route 53",
@@ -3056,13 +3222,9 @@ export const awsCloudPractitionerPracticeExam = [
   },
   {
     id: "acp-106",
-    question: "Which AWS service should you use to monitor AWS resources and applications in real time?",
-    options: [
-      "AWS CloudTrail",
-      "AWS Config",
-      "Amazon CloudWatch",
-      "AWS X-Ray",
-    ],
+    question:
+      "Which AWS service should you use to monitor AWS resources and applications in real time?",
+    options: ["AWS CloudTrail", "AWS Config", "Amazon CloudWatch", "AWS X-Ray"],
     answer: "Amazon CloudWatch",
   },
   {
@@ -3078,7 +3240,8 @@ export const awsCloudPractitionerPracticeExam = [
   },
   {
     id: "acp-108",
-    question: "Which AWS tool can provide best practice recommendations for performance, service limits, and cost optimization?",
+    question:
+      "Which AWS tool can provide best practice recommendations for performance, service limits, and cost optimization?",
     options: [
       "AWS Trusted Advisor",
       "Amazon Inspector",
@@ -3089,18 +3252,15 @@ export const awsCloudPractitionerPracticeExam = [
   },
   {
     id: "acp-109",
-    question: "An enterprise is planning to move one of its older applications from its local data center to AWS. The IT team wants the fastest migration path and has decided not to update the application code or make any architectural changes. Which migration strategy is the most appropriate for this scenario?",
-    options: [
-      "Refactor",
-      "Repurchase",
-      "Rehost",
-      "Replatform",
-    ],
+    question:
+      "An enterprise is planning to move one of its older applications from its local data center to AWS. The IT team wants the fastest migration path and has decided not to update the application code or make any architectural changes. Which migration strategy is the most appropriate for this scenario?",
+    options: ["Refactor", "Repurchase", "Rehost", "Replatform"],
     answer: "Rehost",
   },
   {
     id: "acp-110",
-    question: "A company would like to move its infrastructure to AWS Cloud. Which of the following should be included in the Total Cost of Ownership (TCO) estimate? (Select TWO)",
+    question:
+      "A company would like to move its infrastructure to AWS Cloud. Which of the following should be included in the Total Cost of Ownership (TCO) estimate? (Select TWO)",
     options: [
       "Number of end-users",
       "Server administration",
@@ -3113,7 +3273,8 @@ export const awsCloudPractitionerPracticeExam = [
   },
   {
     id: "acp-111",
-    question: "The development team at a company manages 300 microservices and it is now trying to automate the code reviews to improve the code quality. Which tool/service is the right fit for this requirement?",
+    question:
+      "The development team at a company manages 300 microservices and it is now trying to automate the code reviews to improve the code quality. Which tool/service is the right fit for this requirement?",
     options: [
       "AWS X-Ray",
       "AWS Trusted Advisor",
@@ -3124,7 +3285,8 @@ export const awsCloudPractitionerPracticeExam = [
   },
   {
     id: "acp-112",
-    question: "A company based in Sydney hosts its application on an Amazon Elastic Compute Cloud (Amazon EC2) instance in ap-southeast-2. They would like to deploy the same Amazon EC2 instances in eu-south-1. Which of the following AWS entities can address this use case?",
+    question:
+      "A company based in Sydney hosts its application on an Amazon Elastic Compute Cloud (Amazon EC2) instance in ap-southeast-2. They would like to deploy the same Amazon EC2 instances in eu-south-1. Which of the following AWS entities can address this use case?",
     options: [
       "AWS Lambda",
       "Amazon Machine Image (AMI)",
@@ -3135,7 +3297,8 @@ export const awsCloudPractitionerPracticeExam = [
   },
   {
     id: "acp-113",
-    question: "A start-up would like to monitor its cost on the AWS Cloud and would like to choose an optimal Savings Plan. As a Cloud Practitioner, which AWS service would you use?",
+    question:
+      "A start-up would like to monitor its cost on the AWS Cloud and would like to choose an optimal Savings Plan. As a Cloud Practitioner, which AWS service would you use?",
     options: [
       "AWS Cost Explorer",
       "AWS Pricing Calculator",
@@ -3146,18 +3309,15 @@ export const awsCloudPractitionerPracticeExam = [
   },
   {
     id: "acp-114",
-    question: "Which AWS service allows you to run containerized applications without managing servers or clusters?",
-    options: [
-      "Amazon ECS",
-      "Amazon EKS",
-      "AWS Fargate",
-      "AWS Lambda",
-    ],
+    question:
+      "Which AWS service allows you to run containerized applications without managing servers or clusters?",
+    options: ["Amazon ECS", "Amazon EKS", "AWS Fargate", "AWS Lambda"],
     answer: "AWS Fargate",
   },
   {
     id: "acp-115",
-    question: "Which AWS service is specifically designed for machine learning practitioners to build, train, and deploy ML models?",
+    question:
+      "Which AWS service is specifically designed for machine learning practitioners to build, train, and deploy ML models?",
     options: [
       "Amazon Comprehend",
       "Amazon Rekognition",
@@ -3168,7 +3328,8 @@ export const awsCloudPractitionerPracticeExam = [
   },
   {
     id: "acp-116",
-    question: "A company is planning to implement Chaos Engineering to expose any blind spots that can disrupt the resiliency of the application. Which AWS service will help implement this requirement with the least effort?",
+    question:
+      "A company is planning to implement Chaos Engineering to expose any blind spots that can disrupt the resiliency of the application. Which AWS service will help implement this requirement with the least effort?",
     options: [
       "Amazon Inspector",
       "AWS Trusted Advisor",
