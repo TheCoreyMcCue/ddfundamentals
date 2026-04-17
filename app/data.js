@@ -1575,6 +1575,195 @@ export const logFundamentalsPracticeExam = [
     answer:
       "They help pinpoint the cause of problems and are written records for audit/compliance purpose.",
   },
+  {
+    id: "lf-4",
+    question:
+      "Which log search query should be used to find logs with an error status that contain the indication of their info severity in their log message?",
+    options: [
+      "status:error and info",
+      "error and severity:info",
+      "status:error and severity:info",
+    ],
+    answer: "status:error and info",
+  },
+  {
+    id: "lf-5",
+    question: "Which logging format is automatically parsed by Datadog?",
+    options: ["XML", "JSON", "IIS"],
+    answer: "JSON",
+  },
+  {
+    id: "lf-6",
+    question: "Which of the following is a key benefit of using Logging Without Limits?",
+    options: [
+      "generating metrics",
+      "archiving all logs",
+      "detecting anomalies",
+    ],
+    answer: "archiving all logs",
+  },
+  {
+    id: "lf-7",
+    question: "By default, which directory contains logs for processes running on a Linux distribution?",
+    options: ["/tmp/", "/etc/logrotate/", "/var/log/"],
+    answer: "/var/log/",
+  },
+  {
+    id: "lf-8",
+    question: "Which Datadog product should be used to automatically detect security signals from logs?",
+    options: ["Datadog SIEM", "Datadog CSPM", "Datadog AppSec"],
+    answer: "Datadog SIEM",
+  },
+  {
+    id: "lf-9",
+    question: "What is the maximum number of facets supported by Timeseries and Table visualizations?",
+    options: ["3", "4", "5"],
+    answer: "3",
+  },
+  {
+    id: "lf-10",
+    question: "To present data so it is more easily understood, move a column in the Log Explorer by",
+    options: [
+      "clicking on a column header's dropdown menu and selecting an Insert option.",
+      "dragging and dropping columns to the left or right.",
+      "clicking on a column header's dropdown menu and selecting a Move option.",
+    ],
+    answer: "clicking on a column header's dropdown menu and selecting a Move option.",
+  },
+  {
+    id: "lf-11",
+    question: "Which of the following should be done to visualize log counts by facet in the Log Explorer?",
+    options: [
+      "Click the Group into Fields button, and group by a facet in the dropdown list.",
+      "Click the Group into Patterns button, and group by status and service.",
+      "Click the Group into Patterns button, and group by status.",
+    ],
+    answer: "Click the Group into Fields button, and group by a facet in the dropdown list.",
+  },
+  {
+    id: "lf-12",
+    question: "Which of the following should be done to aggregate logs into long-term key performance indicators (KPIs)?",
+    options: [
+      "Click the Export button and select Generate New Metric.",
+      "Click the Export button and select Export to Dashboard.",
+      "Click the Export button and select Export to Monitor.",
+    ],
+    answer: "Click the Export button and select Generate New Metric.",
+  },
+  {
+    id: "lf-13",
+    question: "Logs provide insight into an application by helping users understand",
+    options: [
+      "why the application failed.",
+      "how the application performed.",
+      "the application queue size.",
+    ],
+    answer: "why the application failed.",
+  },
+  {
+    id: "lf-14",
+    question: "How can specific logs be filtered from processing based on value?",
+    options: [
+      "Set the exclude type with a pattern to test log data against in the Datadog Agent.",
+      "Set the exclude_at_match type with a pattern to test log data against in the Datadog Agent.",
+      "Create a list of filter patterns in the Datadog application.",
+    ],
+    answer: "Set the exclude_at_match type with a pattern to test log data against in the Datadog Agent.",
+  },
+  {
+    id: "lf-15",
+    question: "If log data is important but contains sensitive material, how can that log be processed with the sensitive data hidden?",
+    options: [
+      "Add a log processing rule with a 'mask sequence' type to match sensitive data patterns and mask it.",
+      "Add a log parsing pipeline to match sensitive data patterns and mask it.",
+      "Mask the log data at the application-level before emitting it.",
+    ],
+    answer: "Add a log processing rule with a 'mask sequence' type to match sensitive data patterns and mask it.",
+  },
+  {
+    id: "lf-16",
+    question: "How can string data in a JSON object from a source that does not have an integration be parsed?",
+    options: [
+      "Parse the data at the application-level prior to emitting the log from the source.",
+      "Use the generic JSON processing pipeline to parse the data.",
+      "Create a custom processing pipeline to parse the data based on the tagged source.",
+    ],
+    answer: "Create a custom processing pipeline to parse the data based on the tagged source.",
+  },
+  {
+    id: "lf-17",
+    question: "How can a sortable column based on a log's attribute be added to the List View of the Log Explorer?",
+    options: [
+      "from both the List View \"Options\" dropdown menu and from the facets panel on the left side of the Explorer",
+      "from only the List View \"Options\" dropdown menu",
+      "from the Configuration submenu item under Logs in the main navigation",
+    ],
+    answer: "from both the List View \"Options\" dropdown menu and from the facets panel on the left side of the Explorer",
+  },
+  {
+    id: "lf-18",
+    question: "From the Log Explorer, how can product stakeholders be notified of business-critical data based on a search query?",
+    options: [
+      "Export the search query to a new dashboard.",
+      "Export the search query to a new notebook.",
+      "Export the search query to a new monitor.",
+    ],
+    answer: "Export the search query to a new monitor.",
+  },
+  {
+    id: "lf-19",
+    question: "How are logs collected from JavaScript applications?",
+    options: [
+      "Datadog SDKs or libraries",
+      "filing a support ticket",
+      "uploading Gzip files to Datadog",
+    ],
+    answer: "Datadog SDKs or libraries",
+  },
+  {
+    id: "lf-20",
+    question: "Which Datadog Agent command allows printing of all configurations loaded in a running Agent?",
+    options: ["config", "configload", "configcheck"],
+    answer: "configcheck",
+  },
+  {
+    id: "lf-21",
+    question: "Which of the following is a benefit of leveraging Standard Attributes in logs?",
+    options: ["version control", "easy to search", "API access"],
+    answer: "easy to search",
+  },
+  {
+    id: "lf-22",
+    question: "How long are log-based metrics retained in Datadog?",
+    options: ["15 days", "15 weeks", "15 months"],
+    answer: "15 months",
+  },
+  {
+    id: "lf-23",
+    question: "By default, where are web application browser logs stored?",
+    options: [
+      "not stored by default",
+      "in the browser application's directory on the host machine",
+      "on the server that hosts the web application",
+    ],
+    answer: "not stored by default",
+  },
+  {
+    id: "lf-24",
+    question: "The Datadog Agent tails logs from",
+    options: ["files on disk.", "TCP/UDP Sockets.", "stdout/stderr"],
+    answer: "files on disk.",
+  },
+  {
+    id: "lf-25",
+    question: "Which query searches logs coming from both nginx and redis?",
+    options: [
+      "source:nginx AND redis",
+      "source:(-nginx AND redis)",
+      "source:nginx AND source:redis",
+    ],
+    answer: "source:nginx AND source:redis",
+  },
 ];
 
 export const awsCloudPractitionerPracticeExam = [
