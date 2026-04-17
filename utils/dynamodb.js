@@ -6,12 +6,13 @@ const db = DynamoDBDocumentClient.from(client);
 
 const TABLE = process.env.DYNAMODB_TABLE;
 
-export async function saveQuizResult({ userId, quizId, score, correctCount, totalQuestions }) {
+export async function saveQuizResult({ userId, quizId, score, correctCount, totalQuestions, quizSlug }) {
   await db.send(new PutCommand({
     TableName: TABLE,
     Item: {
       userId,
       quizId,
+      quizSlug: quizSlug ?? quizId,
       score,
       correctCount,
       totalQuestions,
@@ -53,4 +54,24 @@ export async function getUserResults(userId) {
     ExpressionAttributeValues: { ":uid": userId },
   }));
   return res.Items ?? [];
+}
+
+export async function setQuizComplete(userId, quizSlug, completed) {
+  if (completed) {
+    await db.send(new PutCommand({
+      TableName: TABLE,
+      Item: {
+        userId,
+        quizId: `COMPLETE#${quizSlug}`,
+        quizSlug,
+        completedAt: new Date().toISOString(),
+      },
+    }));
+  } else {
+    const { DeleteCommand } = await import("@aws-sdk/lib-dynamodb");
+    await db.send(new DeleteCommand({
+      TableName: TABLE,
+      Key: { userId, quizId: `COMPLETE#${quizSlug}` },
+    }));
+  }
 }

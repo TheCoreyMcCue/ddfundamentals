@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import TrackSection from "./components/TrackSection";
 import { useUser } from "./components/EmailGate";
 
@@ -15,6 +15,7 @@ const tracks = [
         difficulty: "Beginner",
         level: "L100",
         icon: "🐶",
+        certification: true,
       },
       {
         id: "log-fundamentals",
@@ -23,6 +24,7 @@ const tracks = [
         difficulty: "Intermediate",
         level: "L200",
         icon: "🪵",
+        certification: true,
       },
       {
         id: "apm-fundamentals",
@@ -31,6 +33,7 @@ const tracks = [
         difficulty: "Intermediate",
         level: "L200",
         icon: "📡",
+        certification: true,
       },
     ],
   },
@@ -75,6 +78,7 @@ const tracks = [
         difficulty: "Intermediate",
         level: "CCP",
         icon: "☁️",
+        certification: true,
       },
     ],
   },
@@ -94,7 +98,8 @@ const tracks = [
   },
 ];
 
-const totalModules = tracks.flatMap((t) => t.quizzes).length;
+const allQuizzes = tracks.flatMap((t) => t.quizzes);
+const totalModules = allQuizzes.filter((q) => q.certification).length;
 
 function getFirstName(email) {
   if (!email) return "SE";
@@ -103,9 +108,50 @@ function getFirstName(email) {
   return first.charAt(0).toUpperCase() + first.slice(1);
 }
 
+function aggregateStats(results) {
+  const map = {};
+  results.forEach((item) => {
+    if (item.quizId === "PROFILE") return;
+    if (item.quizId?.startsWith("COMPLETE#")) {
+      const slug = item.quizId.replace("COMPLETE#", "");
+      map[slug] = { ...map[slug], completed: true };
+      return;
+    }
+    const slug = item.quizSlug;
+    if (!slug) return;
+    if (!map[slug]) map[slug] = { bestScore: 0, attempts: 0, lastAttempted: null, completed: false };
+    map[slug].attempts++;
+    if (item.score > map[slug].bestScore) map[slug].bestScore = item.score;
+    if (!map[slug].lastAttempted || item.completedAt > map[slug].lastAttempted) {
+      map[slug].lastAttempted = item.completedAt;
+    }
+  });
+  return map;
+}
+
 export default function Home() {
   const userEmail = useUser();
   const [showBanner, setShowBanner] = useState(true);
+  const [statsMap, setStatsMap] = useState({});
+
+  useEffect(() => {
+    if (!userEmail) return;
+    fetch(`/api/results?userId=${encodeURIComponent(userEmail)}`)
+      .then((r) => r.json())
+      .then(({ results }) => setStatsMap(aggregateStats(results ?? [])))
+      .catch(() => {});
+  }, [userEmail]);
+
+  const handleCompleteToggle = useCallback((quizId, completed) => {
+    setStatsMap((prev) => ({
+      ...prev,
+      [quizId]: { ...prev[quizId], completed },
+    }));
+  }, []);
+
+  const certificationIds = new Set(allQuizzes.filter((q) => q.certification).map((q) => q.id));
+  const completedCount = Object.entries(statsMap).filter(([id, s]) => s.completed && certificationIds.has(id)).length;
+  const progressPct = totalModules > 0 ? Math.round((completedCount / totalModules) * 100) : 0;
 
   return (
     <div className="min-h-screen bg-[#0a0a10] text-white">
@@ -153,7 +199,7 @@ export default function Home() {
                 Progress
               </span>
               <span className="text-lg font-semibold text-white">
-                0 /{" "}
+                {completedCount} /{" "}
                 <span className="text-gray-400">{totalModules} Modules</span>
               </span>
             </div>
@@ -161,10 +207,13 @@ export default function Home() {
             <div className="w-36">
               <div className="mb-1 flex justify-between text-xs text-gray-500">
                 <span>Completed</span>
-                <span>0%</span>
+                <span>{progressPct}%</span>
               </div>
               <div className="h-1.5 w-full rounded-full bg-white/10">
-                <div className="h-1.5 w-0 rounded-full bg-[#632CA6]" />
+                <div
+                  className="h-1.5 rounded-full bg-[#632CA6] transition-all duration-500"
+                  style={{ width: `${progressPct}%` }}
+                />
               </div>
             </div>
           </div>
@@ -179,6 +228,8 @@ export default function Home() {
             category={track.category}
             description={track.description}
             quizzes={track.quizzes}
+            statsMap={statsMap}
+            onCompleteToggle={handleCompleteToggle}
           />
         ))}
       </div>

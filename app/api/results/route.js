@@ -3,13 +3,13 @@ import { saveQuizResult, getUserResults } from "@/utils/dynamodb";
 
 export async function POST(request) {
   const body = await request.json();
-  const { userId, quizId, score, correctCount, totalQuestions } = body;
+  const { userId, quizId, score, correctCount, totalQuestions, quizSlug } = body;
 
   if (!userId || !quizId) {
     return NextResponse.json({ error: "userId and quizId are required" }, { status: 400 });
   }
 
-  await saveQuizResult({ userId, quizId, score, correctCount, totalQuestions });
+  await saveQuizResult({ userId, quizId, score, correctCount, totalQuestions, quizSlug });
   return NextResponse.json({ ok: true });
 }
 

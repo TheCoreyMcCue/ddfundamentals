@@ -1,6 +1,6 @@
 import TrackCard from "./TrackCard";
 
-export default function TrackSection({ category, description, quizzes }) {
+export default function TrackSection({ category, description, quizzes, statsMap, onCompleteToggle }) {
   return (
     <section>
       <div className="mb-4">
@@ -9,7 +9,12 @@ export default function TrackSection({ category, description, quizzes }) {
       </div>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {quizzes.map((quiz) => (
-          <TrackCard key={quiz.id} quiz={quiz} />
+          <TrackCard
+            key={quiz.id}
+            quiz={quiz}
+            stats={statsMap?.[quiz.id] ?? {}}
+            onCompleteToggle={onCompleteToggle}
+          />
         ))}
       </div>
     </section>

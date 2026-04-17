@@ -96,12 +96,16 @@ export default function Quiz({ data, title, resourceDoc, quizId }) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         userId: userEmail ?? "anonymous",
-        quizId,
+        quizId: `${quizId}#${Date.now()}`,
         score: scorePct,
         correctCount,
         totalQuestions: quizData.length,
+        quizSlug: quizId,
       }),
-    }).catch(() => {});
+    })
+      .then((r) => r.json())
+      .then((data) => console.log("[quiz] result saved:", data))
+      .catch((err) => console.error("[quiz] failed to save result:", err));
   }, [isFinished]);
 
   if (isFinished) {
