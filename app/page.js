@@ -36,6 +36,15 @@ const tracks = [
         icon: "📡",
         certification: true,
       },
+      {
+        id: "siem-fundamentals",
+        title: "Cloud SIEM",
+        duration: "~15 min",
+        difficulty: "Intermediate",
+        level: "L200",
+        icon: "🛡️",
+        certification: true,
+      },
     ],
   },
   {

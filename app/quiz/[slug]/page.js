@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import Quiz from "@/app/components/Quiz";
-import { quizData, infraFaq, logsFaq, apmFaq, awsCloudPractitionerPracticeExam, logFundamentalsPracticeExam, apmFundamentalsPracticeExam, gcpFundamentalsPracticeExam } from "@/app/data";
+import { quizData, infraFaq, logsFaq, apmFaq, awsCloudPractitionerPracticeExam, logFundamentalsPracticeExam, apmFundamentalsPracticeExam, gcpFundamentalsPracticeExam, siemFundamentalsPracticeExam } from "@/app/data";
 
 const quizConfig = {
   fundamentals: {
@@ -40,6 +40,10 @@ const quizConfig = {
   "gcp-cdl": {
     title: "GCP Cloud Digital Leader Practice Exam",
     data: gcpFundamentalsPracticeExam,
+  },
+  "siem-fundamentals": {
+    title: "Datadog Cloud SIEM Practice Exam",
+    data: siemFundamentalsPracticeExam,
   },
 };
 

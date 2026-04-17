@@ -724,7 +724,7 @@ export const infraFaq = [
   },
   {
     id: "i11",
-    question: "How quickly can I see Watchdog alerts?",
+    question: "How long does Watchdog need to learn your environment before its alerts can be fully trusted?",
     options: [
       "2 to 6 weeks",
       "Watchdog alerts are generated in real time",
@@ -3541,9 +3541,8 @@ export const gcpFundamentalsPracticeExam = [
     ],
     answer: "Meantime for recovery in case of disaster recovery",
   },
-  [
-    {
-      id: "gcpf-15",
+  {
+    id: "gcpf-15",
       question: "What is a managed instance group?",
       options: [
         "Managed instance groups are expensive compared to unmanaged instance groups",
@@ -3583,10 +3582,8 @@ export const gcpFundamentalsPracticeExam = [
       options: ["Microservice design", "Monolith service"],
       answer: "Microservice design",
     },
-  ],
-  [
-    {
-      id: "gcpf-19",
+  {
+    id: "gcpf-19",
       question:
         "What would be the best way to connect to a GCP compute instance?",
       options: [
@@ -3622,12 +3619,10 @@ export const gcpFundamentalsPracticeExam = [
       answer:
         "Load testing should be done to sustain 5x the expected traffic to the application.",
     },
-  ],
-  [
-    {
-      id: "gcpf-23",
-      question:
-        "What would the DevOps philosophy recommend to measure first in the modern cloud design?",
+  {
+    id: "gcpf-31",
+    question:
+      "What would the DevOps philosophy recommend to measure first in the modern cloud design?",
       options: [
         "Disaster recovery setup",
         "Reliability and health of our production systems",
@@ -3668,10 +3663,8 @@ export const gcpFundamentalsPracticeExam = [
       ],
       answer: "Cloud Firestore",
     },
-  ],
-  [
-    {
-      id: "gcpf-27",
+  {
+    id: "gcpf-27",
       question:
         "Our pharmaceutical company wants to observe the behavior of users placing orders and design its application to make it more user-friendly. What might have prompted the company to consider this change?",
       options: [
@@ -3718,5 +3711,19 @@ export const gcpFundamentalsPracticeExam = [
       ],
       answer: "MySQL, PostgreSQL, SQL Server",
     },
-  ],
+];
+
+export const siemFundamentalsPracticeExam = [
+  {
+    id: "siem-1",
+    question:
+      "After creating a custom log detection rule for identifying privilege escalation attempts, the rule does not appear on the MITRE ATT&CK Map despite being enabled. What is the most likely cause?",
+    options: [
+      "The rule uses a log detection type, which is incompatible with the MITRE ATT&CK Map visualization",
+      "The rule is missing the required `tactic:` and `technique:` tags paired with the `security:attack` tag",
+      "The rule must be converted from a custom rule to an out-of-the-box rule to appear on the map",
+    ],
+    answer:
+      "The rule is missing the required `tactic:` and `technique:` tags paired with the `security:attack` tag",
+  },
 ];

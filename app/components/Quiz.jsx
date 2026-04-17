@@ -27,7 +27,7 @@ export default function Quiz({ data, title, resourceDoc, quizId }) {
 
   useEffect(() => {
     const randomized = shuffleArray(
-      data.map((q) => ({ ...q, options: shuffleArray(q.options) }))
+      data.flat(Infinity).map((q) => ({ ...q, options: shuffleArray(q.options) }))
     ).slice(0, 25);
     setQuizData(randomized);
     setAnswers({});
