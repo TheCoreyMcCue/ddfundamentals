@@ -8,6 +8,7 @@ const certificationQuizzes = [
   { id: "fundamentals", title: "Fundamentals Quiz", icon: "🐶", category: "Datadog Certifications" },
   { id: "log-fundamentals", title: "Log Management Fundamentals", icon: "🪵", category: "Datadog Certifications" },
   { id: "apm-fundamentals", title: "APM Fundamentals", icon: "📡", category: "Datadog Certifications" },
+  { id: "siem-fundamentals", title: "Cloud SIEM", icon: "🛡️", category: "Datadog Certifications" },
   { id: "aws-ccp", title: "AWS Cloud Practitioner", icon: "☁️", category: "Cloud Certifications" },
   { id: "gcp-cdl", title: "GCP Cloud Digital Leader", icon: "🌐", category: "Cloud Certifications" },
 ];
