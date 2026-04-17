@@ -23,6 +23,14 @@ const tracks = [
         level: "L200",
         icon: "🪵",
       },
+      {
+        id: "apm-fundamentals",
+        title: "APM Fundamentals",
+        duration: "~15 min",
+        difficulty: "Intermediate",
+        level: "L200",
+        icon: "📡",
+      },
     ],
   },
   {

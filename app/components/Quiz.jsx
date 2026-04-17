@@ -21,11 +21,12 @@ export default function Quiz({ data, title, resourceDoc }) {
   const [checkedAnswers, setCheckedAnswers] = useState({});
   const [quizData, setQuizData] = useState([]);
   const [visibleCount, setVisibleCount] = useState(10);
+  const [showReview, setShowReview] = useState(false);
 
   useEffect(() => {
     const randomized = shuffleArray(
       data.map((q) => ({ ...q, options: shuffleArray(q.options) }))
-    );
+    ).slice(0, 25);
     setQuizData(randomized);
     setAnswers({});
     setCheckedAnswers({});
@@ -89,7 +90,7 @@ export default function Quiz({ data, title, resourceDoc }) {
   if (isFinished) {
     return (
       <div className="min-h-screen bg-[#0a0a10] flex flex-col items-center justify-center px-6 py-16">
-        <div className="w-full max-w-lg text-center">
+        <div className={`w-full text-center ${showReview ? "max-w-3xl" : "max-w-lg"}`}>
           {/* Score ring */}
           <div className="relative mx-auto mb-8 w-36 h-36">
             <svg className="w-full h-full -rotate-90" viewBox="0 0 120 120">
@@ -129,6 +130,12 @@ export default function Quiz({ data, title, resourceDoc }) {
           )}
 
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <button
+              onClick={() => setShowReview((v) => !v)}
+              className="rounded-xl border border-[#632CA6]/50 bg-[#632CA6]/10 px-6 py-2.5 text-sm font-medium text-purple-300 hover:bg-[#632CA6]/20 hover:text-white transition-colors"
+            >
+              {showReview ? "Hide Review" : "Review Answers"}
+            </button>
             <Link
               href="/"
               className="rounded-xl border border-white/10 bg-white/5 px-6 py-2.5 text-sm font-medium text-slate-300 hover:bg-white/10 hover:text-white transition-colors"
@@ -136,6 +143,27 @@ export default function Quiz({ data, title, resourceDoc }) {
               ← Back to Dashboard
             </Link>
           </div>
+
+          {showReview && (
+            <div className="mt-10 w-full text-left">
+              <div className="mb-4 border-t border-white/8 pt-8">
+                <h3 className="text-sm font-semibold uppercase tracking-widest text-slate-500">Answer Review</h3>
+              </div>
+              {quizData.map((q, idx) => (
+                <Question
+                  key={q.id}
+                  questionNumber={idx + 1}
+                  question={q.question}
+                  options={q.options}
+                  selectedAnswer={answers[q.id]}
+                  onAnswerSelect={() => {}}
+                  correctAnswer={q.answer}
+                  checkedStatus={checkedAnswers[q.id] || "incorrect"}
+                  multiSelect={q.multiSelect ?? false}
+                />
+              ))}
+            </div>
+          )}
         </div>
       </div>
     );
