@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Question from "./Questions";
 import { datadogLogs } from "@/utils/datadog";
+import { useUser } from "./EmailGate";
 
 function shuffleArray(array) {
   return [...array].sort(() => Math.random() - 0.5);
@@ -16,7 +17,8 @@ function isAnswerCorrect(selected, correct) {
   return selected === correct;
 }
 
-export default function Quiz({ data, title, resourceDoc }) {
+export default function Quiz({ data, title, resourceDoc, quizId }) {
+  const userEmail = useUser();
   const [answers, setAnswers] = useState({});
   const [checkedAnswers, setCheckedAnswers] = useState({});
   const [quizData, setQuizData] = useState([]);
@@ -86,6 +88,21 @@ export default function Quiz({ data, title, resourceDoc }) {
   const isFinished = answeredCount === quizData.length && quizData.length > 0;
   const scorePct =
     quizData.length > 0 ? Math.round((correctCount / quizData.length) * 100) : 0;
+
+  useEffect(() => {
+    if (!isFinished || !quizId) return;
+    fetch("/api/results", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        userId: userEmail ?? "anonymous",
+        quizId,
+        score: scorePct,
+        correctCount,
+        totalQuestions: quizData.length,
+      }),
+    }).catch(() => {});
+  }, [isFinished]);
 
   if (isFinished) {
     return (

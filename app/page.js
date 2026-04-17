@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import TrackSection from "./components/TrackSection";
+import { useUser } from "./components/EmailGate";
 
 const tracks = [
   {
@@ -95,7 +96,15 @@ const tracks = [
 
 const totalModules = tracks.flatMap((t) => t.quizzes).length;
 
+function getFirstName(email) {
+  if (!email) return "SE";
+  const local = email.split("@")[0];
+  const first = local.split(".")[0];
+  return first.charAt(0).toUpperCase() + first.slice(1);
+}
+
 export default function Home() {
+  const userEmail = useUser();
   const [showBanner, setShowBanner] = useState(true);
 
   return (
@@ -131,7 +140,7 @@ export default function Home() {
             SE Learning Track
           </p>
           <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
-            Welcome, SE 👋
+            Welcome, {getFirstName(userEmail)} 👋
           </h1>
           <p className="mt-3 text-gray-400">
             Build product expertise and crush your customer conversations.

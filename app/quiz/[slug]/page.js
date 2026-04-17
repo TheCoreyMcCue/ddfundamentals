@@ -47,5 +47,5 @@ export default async function QuizPage({ params }) {
     notFound();
   }
 
-  return <Quiz title={config.title} data={config.data} resourceDoc={config.resourceDoc} />;
+  return <Quiz title={config.title} data={config.data} resourceDoc={config.resourceDoc} quizId={slug} />;
 }

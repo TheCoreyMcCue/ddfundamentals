@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.1031.0",
+    "@aws-sdk/lib-dynamodb": "^3.1031.0",
     "@datadog/browser-logs": "^6.6.4",
     "@datadog/browser-rum": "^6.6.4",
     "next": "16.2.4",
