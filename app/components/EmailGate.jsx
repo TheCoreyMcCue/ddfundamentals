@@ -41,10 +41,10 @@ export default function EmailGate({ children }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const trimmed = input.trim().toLowerCase();
-    if (!trimmed.endsWith("@datadoghq.com")) {
-      setError("Access is restricted to @datadoghq.com email addresses.");
-      return;
-    }
+    // if (!trimmed.endsWith("@datadoghq.com")) {
+    //   setError("Access is restricted to @datadoghq.com email addresses.");
+    //   return;
+    // }
     setSubmitting(true);
     try {
       await fetch("/api/users", {
@@ -84,8 +84,11 @@ export default function EmailGate({ children }) {
             <input
               type="email"
               value={input}
-              onChange={(e) => { setInput(e.target.value); setError(""); }}
-              placeholder="you@datadoghq.com"
+              onChange={(e) => {
+                setInput(e.target.value);
+                setError("");
+              }}
+              placeholder="you@notdatadoghq.com"
               className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-slate-500 outline-none focus:border-[#632CA6]/60 focus:ring-1 focus:ring-[#632CA6]/40 transition-all"
               autoFocus
             />
@@ -103,9 +106,5 @@ export default function EmailGate({ children }) {
     );
   }
 
-  return (
-    <UserContext.Provider value={email}>
-      {children}
-    </UserContext.Provider>
-  );
+  return <UserContext.Provider value={email}>{children}</UserContext.Provider>;
 }
