@@ -686,13 +686,14 @@ export const logFundamentalsPracticeExam = [
   },
   {
     id: "lf-72",
-    question: "When a new facet is created, which logs does it apply to?",
+    question: "Which of the following requires a facet to be created first?",
     options: [
-      "all new logs going forward",
-      "all logs, retroactively",
-      "only logs in the index where it was created",
+      "grouping logs by an attribute in a dashboard widget or log monitor",
+      "searching logs by that attribute in the Log Explorer",
+      "generating a metric from logs using that attribute",
     ],
-    answer: "all new logs going forward",
+    answer:
+      "grouping logs by an attribute in a dashboard widget or log monitor",
   },
   {
     id: "lf-73",
@@ -1004,5 +1005,16 @@ export const logFundamentalsPracticeExam = [
     ],
     answer:
       "to search and correlate across sources that would otherwise be isolated",
+  },
+  {
+    id: "lf-102",
+    question:
+      "An attribute has been extracted by a pipeline but no facet has been created for it. What can still be done with it?",
+    options: [
+      "Logs can be searched by that attribute in the Log Explorer.",
+      "Nothing, since attributes are only queryable once a facet exists.",
+      "It can be used as a group-by dimension in a dashboard widget.",
+    ],
+    answer: "Logs can be searched by that attribute in the Log Explorer.",
   },
 ];
