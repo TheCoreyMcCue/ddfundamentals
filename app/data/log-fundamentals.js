@@ -1,7 +1,4 @@
 export const logFundamentalsPracticeExam = [
-  // ============================================================
-  // OFFICIAL PRACTICE EXAM (lf-1 to lf-25) — verbatim, keys as given
-  // ============================================================
   {
     id: "lf-1",
     question:
@@ -241,11 +238,6 @@ export const logFundamentalsPracticeExam = [
     options: ["/tmp/", "/etc/logrotate/", "/var/log/"],
     answer: "/var/log/",
   },
-
-  // ============================================================
-  // ADDITIONAL QUESTIONS (lf-26 onward)
-  // Log Collection
-  // ============================================================
   {
     id: "lf-26",
     question:
@@ -262,11 +254,12 @@ export const logFundamentalsPracticeExam = [
     question:
       "In the Agent's conf.yaml for logs, what does the 'type' parameter specify?",
     options: [
-      "the log level of the events to collect",
-      "the source of the log (file, tcp, udp, journald)",
-      "the programming language of the application",
+      "the type of log input source, such as tcp, udp, file, windows_event, docker, or journald",
+      "the severity level of the logs to collect",
+      "the programming language of the application emitting the logs",
     ],
-    answer: "the source of the log (file, tcp, udp, journald)",
+    answer:
+      "the type of log input source, such as tcp, udp, file, windows_event, docker, or journald",
   },
   {
     id: "lf-28",
@@ -306,7 +299,8 @@ export const logFundamentalsPracticeExam = [
   },
   {
     id: "lf-32",
-    question: "What is the default transport the Agent uses to send logs?",
+    question:
+      "Since Agent v6.19 and v7.19, what is the default transport used to send logs?",
     options: ["HTTPS", "TCP", "UDP"],
     answer: "HTTPS",
   },
@@ -394,10 +388,6 @@ export const logFundamentalsPracticeExam = [
     ],
     answer: "Observability Pipelines",
   },
-
-  // ============================================================
-  // Log Parsing and Processing
-  // ============================================================
   {
     id: "lf-41",
     question:
@@ -569,10 +559,6 @@ export const logFundamentalsPracticeExam = [
     ],
     answer: "env, service, version",
   },
-
-  // ============================================================
-  // Searching and Filtering
-  // ============================================================
   {
     id: "lf-61",
     question:
@@ -594,11 +580,11 @@ export const logFundamentalsPracticeExam = [
     id: "lf-63",
     question: "What does the query prod* search?",
     options: [
-      "log messages containing strings that start with prod",
-      "log attributes containing strings that start with prod",
-      "logs from the production index only",
+      "the log message, for any term beginning with prod",
+      "every attribute on the log, for any value beginning with prod",
+      "the source attribute only, for any value beginning with prod",
     ],
-    answer: "log messages containing strings that start with prod",
+    answer: "the log message, for any term beginning with prod",
   },
   {
     id: "lf-64",
@@ -713,10 +699,6 @@ export const logFundamentalsPracticeExam = [
     ],
     answer: "Create a Saved View.",
   },
-
-  // ============================================================
-  // Analysis, Indexes, and Archives
-  // ============================================================
   {
     id: "lf-75",
     question:
@@ -830,10 +812,6 @@ export const logFundamentalsPracticeExam = [
     answer:
       "logs that are queried infrequently but must remain searchable for a long retention period",
   },
-
-  // ============================================================
-  // Utilization
-  // ============================================================
   {
     id: "lf-86",
     question:
@@ -887,10 +865,6 @@ export const logFundamentalsPracticeExam = [
     answer:
       "Sensitive Data Scanner redacts inside the Datadog platform after ingestion, while the Agent rule redacts on the host before transmission.",
   },
-
-  // ============================================================
-  // Troubleshooting
-  // ============================================================
   {
     id: "lf-91",
     question:
@@ -955,10 +929,6 @@ export const logFundamentalsPracticeExam = [
     ],
     answer: "the estimated usage truncated count metric",
   },
-
-  // ============================================================
-  // Fundamentals
-  // ============================================================
   {
     id: "lf-97",
     question: "What are logs?",
@@ -1016,5 +986,471 @@ export const logFundamentalsPracticeExam = [
       "It can be used as a group-by dimension in a dashboard widget.",
     ],
     answer: "Logs can be searched by that attribute in the Log Explorer.",
+  },
+  {
+    id: "lf-103",
+    question: "Which tag format does Datadog recommend?",
+    options: ["<key>:<value>", "<value> on its own", "<key>=<value>"],
+    answer: "<key>:<value>",
+  },
+  {
+    id: "lf-104",
+    question:
+      "Which reserved tag key enables span filtering and automated pipeline creation for Log Management?",
+    options: ["source", "service", "device"],
+    answer: "source",
+  },
+  {
+    id: "lf-105",
+    question:
+      "Which reserved tag key is used to assign ownership of a resource?",
+    options: ["team", "service", "env"],
+    answer: "team",
+  },
+  {
+    id: "lf-106",
+    question:
+      "Which reserved tag key allows correlation between metrics, traces, processes, and logs?",
+    options: ["host", "version", "source"],
+    answer: "host",
+  },
+  {
+    id: "lf-107",
+    question: "What must a tag string start with?",
+    options: ["a letter", "a number", "either a letter or an underscore"],
+    answer: "a letter",
+  },
+  {
+    id: "lf-108",
+    question:
+      "What is the maximum length of a tag string, including the key and the colon?",
+    options: ["200 characters", "100 characters", "500 characters"],
+    answer: "200 characters",
+  },
+  {
+    id: "lf-109",
+    question:
+      "In the tag env:staging:east, what is the key and what is the value?",
+    options: [
+      "the key is env and the value is staging:east",
+      "the key is env:staging and the value is east",
+      "the tag is invalid because it contains two colons",
+    ],
+    answer: "the key is env and the value is staging:east",
+  },
+  {
+    id: "lf-110",
+    question: "What happens to a space or comma inside a tag string?",
+    options: [
+      "It is converted to an underscore.",
+      "It is removed entirely.",
+      "The tag is rejected.",
+    ],
+    answer: "It is converted to an underscore.",
+  },
+  {
+    id: "lf-111",
+    question:
+      "How does the Agent resolve a tag key that is set to different values by different sources?",
+    options: [
+      "It does not enforce precedence, and emits every unique value for that key.",
+      "The value set in datadog.yaml always wins.",
+      "The most recently configured source always wins.",
+    ],
+    answer:
+      "It does not enforce precedence, and emits every unique value for that key.",
+  },
+  {
+    id: "lf-112",
+    question:
+      "How does case handling differ between metric tags and log attributes?",
+    options: [
+      "Metric tags are normalized to lowercase, while log attributes are case-sensitive and not normalized.",
+      "Both are normalized to lowercase.",
+      "Both are case-sensitive and left unchanged.",
+    ],
+    answer:
+      "Metric tags are normalized to lowercase, while log attributes are case-sensitive and not normalized.",
+  },
+  {
+    id: "lf-113",
+    question:
+      "Why should tags not be derived from values such as timestamps or request IDs?",
+    options: [
+      "They are unbounded sources and cause uncontrolled growth in the number of metrics.",
+      "They are rejected by the tag validation rules.",
+      "They cannot be used in the Log Explorer.",
+    ],
+    answer:
+      "They are unbounded sources and cause uncontrolled growth in the number of metrics.",
+  },
+  {
+    id: "lf-114",
+    question:
+      "Which is the minimum Datadog Agent version that supports log collection?",
+    options: ["v6.0", "v5.0", "v7.0"],
+    answer: "v6.0",
+  },
+  {
+    id: "lf-115",
+    question: "Where should a custom log collection configuration be created?",
+    options: [
+      "in a <CUSTOM_LOG_SOURCE>.d/conf.yaml file under the conf.d directory",
+      "in a new section of datadog.yaml",
+      "in the Log Configuration page of the Datadog UI",
+    ],
+    answer:
+      "in a <CUSTOM_LOG_SOURCE>.d/conf.yaml file under the conf.d directory",
+  },
+  {
+    id: "lf-116",
+    question:
+      "After adding a custom log collection configuration and restarting the Agent, where should the new source appear?",
+    options: [
+      "under the Checks section of the Agent status output",
+      "under the Forwarder section of the Agent status output",
+      "in the datadog.yaml file",
+    ],
+    answer: "under the Checks section of the Agent status output",
+  },
+  {
+    id: "lf-117",
+    question:
+      "Which parameters are required for every log collection configuration entry?",
+    options: [
+      "type, service, and source",
+      "path, port, and tags",
+      "service, env, and version",
+    ],
+    answer: "type, service, and source",
+  },
+  {
+    id: "lf-118",
+    question:
+      "What is the default value of the start_position parameter for a file tailer?",
+    options: ["end", "beginning", "forceBeginning"],
+    answer: "end",
+  },
+  {
+    id: "lf-119",
+    question:
+      "Which start_position value is always used when tailing a container?",
+    options: ["beginning", "end", "forceEnd"],
+    answer: "beginning",
+  },
+  {
+    id: "lf-120",
+    question:
+      "A file tailer has a stored offset, but start_position is set to beginning. What does the Agent do?",
+    options: [
+      "It uses the stored offset, because the offset takes precedence.",
+      "It reads from the beginning of the file, because the setting takes precedence.",
+      "It fails to start and logs a configuration error.",
+    ],
+    answer: "It uses the stored offset, because the offset takes precedence.",
+  },
+  {
+    id: "lf-121",
+    question:
+      "Which start_position value forces the Agent to ignore a stored offset?",
+    options: ["forceBeginning", "beginning", "start"],
+    answer: "forceBeginning",
+  },
+  {
+    id: "lf-122",
+    question:
+      "Which start_position value is not supported when the path contains a wildcard?",
+    options: ["beginning", "end", "forceEnd"],
+    answer: "beginning",
+  },
+  {
+    id: "lf-123",
+    question:
+      "Which parameter excludes specific files when the log path contains a wildcard?",
+    options: ["exclude_paths", "exclude_units", "exclude_at_match"],
+    answer: "exclude_paths",
+  },
+  {
+    id: "lf-124",
+    question:
+      "Which parameter should be set for the Agent to read a log file encoded as UTF-16 little-endian?",
+    options: ["encoding", "charset", "format"],
+    answer: "encoding",
+  },
+  {
+    id: "lf-125",
+    question: "What is the purpose of the sourcecategory parameter?",
+    options: [
+      "to define the category that a source attribute belongs to, such as source:postgres with sourcecategory:database",
+      "to select which index the logs are written to",
+      "to set the severity of the collected logs",
+    ],
+    answer:
+      "to define the category that a source attribute belongs to, such as source:postgres with sourcecategory:database",
+  },
+  {
+    id: "lf-126",
+    question:
+      "Which logs_config option captures the sender IP address and includes it in the log payload for TCP and UDP sources?",
+    options: ["use_sourcehost_tag", "use_client_ip", "capture_source_ip"],
+    answer: "use_sourcehost_tag",
+  },
+  {
+    id: "lf-127",
+    question:
+      "Which user must have read access to a log file for the Agent to tail it on Windows?",
+    options: ["ddagentuser", "dd-agent", "LocalSystem"],
+    answer: "ddagentuser",
+  },
+  {
+    id: "lf-128",
+    question:
+      "Which log formats does the Agent support over a TCP or UDP socket?",
+    options: ["raw string, JSON, and Syslog", "JSON only", "JSON and XML"],
+    answer: "raw string, JSON, and Syslog",
+  },
+  {
+    id: "lf-129",
+    question: "On Linux, where is the Agent's main configuration file located?",
+    options: [
+      "/etc/datadog-agent/datadog.yaml",
+      "/opt/datadog-agent/etc/datadog.yaml",
+      "/var/log/datadog/datadog.yaml",
+    ],
+    answer: "/etc/datadog-agent/datadog.yaml",
+  },
+  {
+    id: "lf-130",
+    question: "On macOS, where is the Agent's main configuration file located?",
+    options: [
+      "/opt/datadog-agent/etc/datadog.yaml",
+      "/etc/datadog-agent/datadog.yaml",
+      "/usr/local/datadog/datadog.yaml",
+    ],
+    answer: "/opt/datadog-agent/etc/datadog.yaml",
+  },
+  {
+    id: "lf-131",
+    question:
+      "How is an Agent check enabled from the example file shipped in its configuration folder?",
+    options: [
+      "Rename conf.yaml.example to conf.yaml.",
+      "Rename conf.yaml.example to auto_conf.yaml.",
+      "Move conf.yaml.example into datadog.yaml.",
+    ],
+    answer: "Rename conf.yaml.example to conf.yaml.",
+  },
+  {
+    id: "lf-132",
+    question:
+      "Two YAML files in conf.d point to the same log source. What does the Agent do?",
+    options: [
+      "It considers the files in alphabetical order and uses the first one, to avoid duplicate logs.",
+      "It merges both configurations and collects the source twice.",
+      "It refuses to start until the conflict is resolved.",
+    ],
+    answer:
+      "It considers the files in alphabetical order and uses the first one, to avoid duplicate logs.",
+  },
+  {
+    id: "lf-133",
+    question:
+      "Which file in a check's configuration folder holds its Autodiscovery template?",
+    options: ["auto_conf.yaml", "conf.yaml.default", "metrics.yaml"],
+    answer: "auto_conf.yaml",
+  },
+  {
+    id: "lf-134",
+    question:
+      "What does the Agent do with a zero-length file in the conf.d directory?",
+    options: [
+      "It ignores the file.",
+      "It fails to start.",
+      "It treats it as a disabled check and logs a warning.",
+    ],
+    answer: "It ignores the file.",
+  },
+  {
+    id: "lf-135",
+    question:
+      "What does Datadog Log Management do to remove the trade-off between coverage and cost?",
+    options: [
+      "It decouples log ingestion from log indexing.",
+      "It compresses logs before they are indexed.",
+      "It limits ingestion to a fixed daily volume.",
+    ],
+    answer: "It decouples log ingestion from log indexing.",
+  },
+  {
+    id: "lf-136",
+    question:
+      "Which Datadog product detects security threats without requiring logs to be indexed?",
+    options: [
+      "Cloud SIEM",
+      "Application Security Management",
+      "Cloud Security Posture Management",
+    ],
+    answer: "Cloud SIEM",
+  },
+  {
+    id: "lf-137",
+    question:
+      "Which Log Explorer visualization should be used to show log counts over time?",
+    options: ["Timeseries", "Top List", "Table"],
+    answer: "Timeseries",
+  },
+  {
+    id: "lf-138",
+    question:
+      "Which Log Explorer visualization ranks the highest values of a facet by an aggregate?",
+    options: ["Top List", "Distribution", "Scatter Plot"],
+    answer: "Top List",
+  },
+  {
+    id: "lf-139",
+    question:
+      "Which Log Explorer visualization shows the relative share of each value as nested rectangles?",
+    options: ["Tree Map", "Bar Chart", "Timeseries"],
+    answer: "Tree Map",
+  },
+  {
+    id: "lf-140",
+    question:
+      "Which Log Explorer visualization plots two measures against each other?",
+    options: ["Scatter Plot", "Distribution", "Pie Chart"],
+    answer: "Scatter Plot",
+  },
+  {
+    id: "lf-141",
+    question:
+      "Which Log Explorer visualization shows how the values of a measure are spread across buckets?",
+    options: ["Distribution", "Top List", "Tree Map"],
+    answer: "Distribution",
+  },
+  {
+    id: "lf-142",
+    question:
+      "Which Log Explorer visualization is the default when browsing raw log events?",
+    options: ["List", "Timeseries", "Table"],
+    answer: "List",
+  },
+  {
+    id: "lf-143",
+    question:
+      "Which Group into option clusters similar log messages together to reveal noisy sources?",
+    options: ["Patterns", "Fields", "Transactions"],
+    answer: "Patterns",
+  },
+  {
+    id: "lf-144",
+    question:
+      "Which Group into option collects log events that share a common identifier, such as a request ID?",
+    options: ["Transactions", "Patterns", "Fields"],
+    answer: "Transactions",
+  },
+  {
+    id: "lf-145",
+    question:
+      "Which Group into option aggregates logs by the values of a facet?",
+    options: ["Fields", "Patterns", "Transactions"],
+    answer: "Fields",
+  },
+  {
+    id: "lf-146",
+    question:
+      "What is the default aggregation applied when logs are grouped by a facet?",
+    options: [
+      "a count of log events",
+      "a sum of the selected measure",
+      "a unique count of the facet",
+    ],
+    answer: "a count of log events",
+  },
+  {
+    id: "lf-147",
+    question:
+      "What is required in order to aggregate logs by the average of a numeric attribute?",
+    options: [
+      "The attribute must be defined as a measure.",
+      "The attribute must be a reserved attribute.",
+      "The attribute must be added to an index filter.",
+    ],
+    answer: "The attribute must be defined as a measure.",
+  },
+  {
+    id: "lf-148",
+    question: "What does a Saved View in the Log Explorer preserve?",
+    options: [
+      "the search query, the selected columns, the facets, and the time range",
+      "only the search query",
+      "only the visualization type and its group-by",
+    ],
+    answer:
+      "the search query, the selected columns, the facets, and the time range",
+  },
+  {
+    id: "lf-149",
+    question:
+      "Which panel of the Log Explorer is used to browse and filter on available facets?",
+    options: [
+      "the facets panel on the left side of the Explorer",
+      "the log side panel that opens when a log is selected",
+      "the Log Configuration page",
+    ],
+    answer: "the facets panel on the left side of the Explorer",
+  },
+  {
+    id: "lf-150",
+    question:
+      "What is shown when an individual log event is selected in the Log Explorer?",
+    options: [
+      "a side panel with the log's attributes and links to related telemetry",
+      "a new browser tab containing the raw log file",
+      "the pipeline that processed the log",
+    ],
+    answer:
+      "a side panel with the log's attributes and links to related telemetry",
+  },
+  {
+    id: "lf-151",
+    question:
+      "Which toggle in the Log Explorer includes logs stored in the Flex Tier in the current query?",
+    options: ["Include Flex Logs", "Include Archives", "Include Live Tail"],
+    answer: "Include Flex Logs",
+  },
+  {
+    id: "lf-152",
+    question:
+      "Which of the following is the recommended way for an application to emit logs so the Agent can collect them?",
+    options: [
+      "write them to a file or to stdout in a structured format such as JSON",
+      "send them directly to the Datadog intake from application code",
+      "store them in a database table for later upload",
+    ],
+    answer:
+      "write them to a file or to stdout in a structured format such as JSON",
+  },
+  {
+    id: "lf-153",
+    question:
+      "Why is a structured format preferred over plain text when emitting logs?",
+    options: [
+      "Its fields can be searched and aggregated without writing parsing rules.",
+      "It uses less storage than plain text.",
+      "It is the only format the Agent can transmit.",
+    ],
+    answer:
+      "Its fields can be searched and aggregated without writing parsing rules.",
+  },
+  {
+    id: "lf-154",
+    question:
+      "Which log source requires no Agent, because logs are sent from the client side?",
+    options: [
+      "browser logs collected by the Browser Logs SDK",
+      "logs tailed from a file on a Linux host",
+      "logs collected from journald",
+    ],
+    answer: "browser logs collected by the Browser Logs SDK",
   },
 ];
