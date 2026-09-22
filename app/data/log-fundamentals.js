@@ -1453,4 +1453,185 @@ export const logFundamentalsPracticeExam = [
     ],
     answer: "browser logs collected by the Browser Logs SDK",
   },
+  {
+    id: "lf-155",
+    question: "What is the definition of a log?",
+    options: [
+      "a measure of the amount of work performed by an application and its associated metadata",
+      "a text file which holds any value to highlight some form of activity on a system",
+      "an event that contains the complete processing of a request",
+      "none of the above",
+    ],
+    answer:
+      "a text file which holds any value to highlight some form of activity on a system",
+  },
+  {
+    id: "lf-156",
+    question:
+      "Which pair of environment variables collects logs from all Docker containers?",
+    options: [
+      "DD_LOGS_ENABLED=true and DD_LOGS_CONFIG_CONTAINER_COLLECT_ALL=true",
+      "DD_LOGS_ENABLED=true and DD_CONTAINER_COLLECT_ALL_LOGS=true",
+      "DD_LOG_ENABLED=true and DD_LOGS_CONFIG_CONTAINER_COLLECT_ALL=true",
+      "DD_LOGS_ENABLED=true and DD_LOG_CONFIG_CONTAINER_COLLECT_ALL=true",
+    ],
+    answer:
+      "DD_LOGS_ENABLED=true and DD_LOGS_CONFIG_CONTAINER_COLLECT_ALL=true",
+  },
+  {
+    id: "lf-157",
+    question: "Which port are logs typically submitted over when using HTTPS?",
+    options: ["443", "8125", "80", "10516"],
+    answer: "443",
+  },
+  {
+    id: "lf-158",
+    question:
+      "Which port are logs typically submitted over when using TCP only?",
+    options: ["10516", "10514", "443", "80"],
+    answer: "10516",
+  },
+  {
+    id: "lf-159",
+    question: "Which parameter is used to enforce TCP log submission?",
+    options: [
+      "use_tcp: true",
+      "use_http: false",
+      "use_udp: false",
+      "none of the above",
+    ],
+    answer: "use_tcp: true",
+  },
+  {
+    id: "lf-160",
+    question: "Which environment variable excludes container logs?",
+    options: [
+      "DD_CONTAINER_EXCLUDE_LOGS",
+      "DD_CONTAINER_EXCLUDE_LOG",
+      "AC_EXCLUDE",
+    ],
+    answer: "DD_CONTAINER_EXCLUDE_LOGS",
+  },
+  {
+    id: "lf-161",
+    question:
+      "For syslog status codes, which log status does the value 6 represent once the log is ingested by Datadog?",
+    options: ["Informational", "Critical", "Debug", "OK"],
+    answer: "Informational",
+  },
+  {
+    id: "lf-162",
+    question:
+      "A log status string beginning with 'e' is matched to which status?",
+    options: ["Error", "Emergency", "Alert", "Debug"],
+    answer: "Error",
+  },
+  {
+    id: "lf-163",
+    question:
+      "Which processor adds a new attribute, whose name contains no spaces or special characters, to logs matching a provided search query?",
+    options: [
+      "Category Processor",
+      "Attribute Remapper",
+      "Status Remapper",
+      "Service Remapper",
+    ],
+    answer: "Category Processor",
+  },
+  {
+    id: "lf-164",
+    question:
+      "Which query correctly returns all logs with an HTTP status code in the 200 to 299 range?",
+    options: [
+      "@http.status_code:[200 TO 299]",
+      "@http.status_code:[200-299]",
+      "http.status_code:[200-299]",
+      '"http.statuscode:200 - 299"',
+    ],
+    answer: "@http.status_code:[200 TO 299]",
+  },
+  {
+    id: "lf-165",
+    question:
+      "Which Grok rule parses the date in the log message 2007-08-31 19:22:22.427 ADT?",
+    options: [
+      '%{date("yyyy-MM-dd HH:mm:ss.SSS z"):date}',
+      '%{date("yyyy-MM-dd HH:mm:ss.SSS Z"):date}',
+      '%{date("yyyy-MM-dd HH:mm:ss.SSSZ"):date}',
+      '%{date("yyyy-MM-dd HH:mm:ss"):date}',
+    ],
+    answer: '%{date("yyyy-MM-dd HH:mm:ss.SSS z"):date}',
+  },
+  {
+    id: "lf-166",
+    question:
+      "Which rule parses the array in the log message Users [John, Oliver, Marc, Tom] have been added to the database into individual elements?",
+    options: [
+      '%{data:users:array("[]",",")}',
+      '%{data:users:array("[]","-")}',
+      '%{data:users:array("[]","")}',
+      "none of the above",
+    ],
+    answer: '%{data:users:array("[]",",")}',
+  },
+  {
+    id: "lf-167",
+    question:
+      "Which tag can be used to find logs that have not passed through a pipeline?",
+    options: [
+      "datadog.pipelines:false",
+      "datadog.pipelines:true",
+      "dd_pipelines:false",
+      "index:main",
+    ],
+    answer: "datadog.pipelines:false",
+  },
+  {
+    id: "lf-168",
+    question: "Which tag key is used to search logs from a specific index?",
+    options: ["index", "dd_index", "user_index", "bucket"],
+    answer: "index",
+  },
+  {
+    id: "lf-169",
+    question:
+      "If multiple Service Remappers are contained in a pipeline, which one is used?",
+    options: ["the first one", "the last one", "none of them"],
+    answer: "the first one",
+  },
+  {
+    id: "lf-170",
+    question:
+      "Which tag is added to all logs by default once they are indexed?",
+    options: ["index", "team", "datadog.pipelines"],
+    answer: "index",
+  },
+  {
+    id: "lf-171",
+    question:
+      "Logs shown in Live Tail have already been processed by any matching pipelines.",
+    options: ["true", "false"],
+    answer: "true",
+  },
+  {
+    id: "lf-172",
+    question:
+      "In what ways can a user download a CSV of their logs from Datadog?",
+    options: [
+      "UI only",
+      "UI and API",
+      "UI, API, and via the Log Stream dashboard widget",
+    ],
+    answer: "UI only",
+  },
+  {
+    id: "lf-173",
+    question: "Which of the following are standard attributes by default?",
+    options: [
+      "network.client.ip, http.method, http.useragent_details.os.family",
+      "network.database.client.ip, http.status_code, error.stack",
+      "db.table, syslog.hostname, usr.name",
+    ],
+    answer: "network.client.ip, http.method, http.useragent_details.os.family",
+  },
 ];
